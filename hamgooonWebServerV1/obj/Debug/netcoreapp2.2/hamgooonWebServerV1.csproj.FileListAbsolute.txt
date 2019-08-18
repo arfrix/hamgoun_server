@@ -1,0 +1,14 @@
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\bin\Debug\netcoreapp2.2\hamgooonWebServerV1.deps.json
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\bin\Debug\netcoreapp2.2\hamgooonWebServerV1.runtimeconfig.json
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\bin\Debug\netcoreapp2.2\hamgooonWebServerV1.runtimeconfig.dev.json
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\bin\Debug\netcoreapp2.2\hamgooonWebServerV1.dll
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.csprojAssemblyReference.cache
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.csproj.CoreCompileInputs.cache
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.RazorAssemblyInfo.cache
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.RazorAssemblyInfo.cs
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.AssemblyInfoInputs.cache
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.AssemblyInfo.cs
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.RazorTargetAssemblyInfo.cache
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\bin\Debug\netcoreapp2.2\hamgooonWebServerV1.pdb
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.dll
+C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\obj\Debug\netcoreapp2.2\hamgooonWebServerV1.pdb
