@@ -37,7 +37,7 @@ namespace hamgooonWebServerV1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env , HamgooonContext context)
         {
-            context.Database.Migrate();
+           // context.Database.Migrate();
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {

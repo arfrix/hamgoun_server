@@ -8,4 +8,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>C:\Users\arfa\projects\hamgooon\server\hamgooonWebServerV1\hamgooonWebServerV1\bin\Release\netcoreapp2.2\pubish</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>07/31/2019 10:47:21</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>08/17/2019 22:10:30</publishTime>
+    </File>
+  </ItemGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=DATABASESERVER\HAMGOUNSERVER%3bDatabase=hamgooonDb%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>
