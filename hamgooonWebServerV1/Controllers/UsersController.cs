@@ -35,23 +35,23 @@ namespace hamgooonWebServerV1.Controllers
         }
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(long id)
+        [HttpPost("login")]
+        public async Task<ActionResult<long>> login(ReqForLogin req)
         {
-            var user = await _context.User.FindAsync(id);
+            var user =  _context.User.Where(userToFind => userToFind.UserName == req.userName && userToFind.Pass == req.pass).Select(userToSelect => userToSelect.Id);
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return Ok(user);
         }
 
         
 
         // POST: Users
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             _context.User.Add(user);
