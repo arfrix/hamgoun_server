@@ -179,7 +179,7 @@ namespace hamgooonWebServerV1.Controllers
             if (result.Count() == 0)
                 return Ok(Response(false, "not found"));
             else
-                return Ok(result);
+                return Ok(Response(true,"found somthing",result));
         }
 
 
@@ -209,6 +209,15 @@ namespace hamgooonWebServerV1.Controllers
         {
             return new
             {
+                status = status,
+                massage = msg
+            };
+        }
+        private object Response(bool status, string msg, IQueryable data)
+        {
+            return new
+            {
+                data = data,
                 status = status,
                 massage = msg
             };

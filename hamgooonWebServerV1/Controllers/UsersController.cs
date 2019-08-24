@@ -77,7 +77,8 @@ namespace hamgooonWebServerV1.Controllers
         public async Task<ActionResult<Post>> UserSearch(ReqForSearch req)
         {
 
-            var result = _context.User.Where(user => user.Edu_highSchool.Contains(req.KeyWord)
+            var result = _context.User.Where(user => user.UserName.Contains(req.KeyWord)
+                                                     || user.Edu_highSchool.Contains(req.KeyWord)
                                                      || user.Edu_univercity.Contains(req.KeyWord)
                                                      || user.Edu_subject.Contains(req.KeyWord)
                                                      || user.Work_job.Contains(req.KeyWord)
@@ -104,12 +105,61 @@ namespace hamgooonWebServerV1.Controllers
                                                      || user.Skill_secondSkillName.Contains(req.KeyWord)
                                                      || user.Teach_mainTeachName.Contains(req.KeyWord)
                                                      || user.Teach_secondTeachName.Contains(req.KeyWord)
-                                                    );
+                                                    ).Select(resultusers => new {
+                                                        
+                                                          Id = resultusers.Id,
+                                                          UserName =resultusers.UserName,
+
+                                                        Firstname =resultusers.Firstname,
+                                                        Lastname = resultusers.Lastname,
+                                                        Email = resultusers.Email,
+                                                        PhoneNumber = resultusers.PhoneNumber,
+                                                        ProfileImgUrl = resultusers.ProfileImgUrl,
+                                                        PhoneVerifed = resultusers.PhoneVerifed,
+                                                        SMSCode = resultusers.SMSCode,
+                                                        EmailVerifed = resultusers.EmailVerifed,
+                                                        EmailCode = resultusers.EmailCode,
+                                                        StickerUrl1 = resultusers.StickerUrl1,
+                                                        StickerUrl2 = resultusers.StickerUrl2,
+                                                        StickerUrl3 = resultusers.StickerUrl3,
+                                                        StickerUrl4 = resultusers.StickerUrl4,
+                                                        StickerUrl5 = resultusers.StickerUrl5,
+                                                        Edu_highSchool = resultusers.Edu_highSchool,
+                                                        Edu_univercity = resultusers.Edu_univercity,
+                                                        Edu_subject = resultusers.Edu_subject,
+                                                        Work_job = resultusers.Work_job,
+                                                        Work_company = resultusers.Work_company,
+                                                        Location_motherTown = resultusers.Location_motherTown,
+                                                        Location_livingCountry = resultusers.Location_livingCountry,
+                                                        Location_livingTown = resultusers.Location_livingTown,
+                                                        Languge_motherTongue = resultusers.Languge_motherTongue,
+                                                        Languge_dialect = resultusers.Languge_dialect,
+                                                        Languge_secondLangName = resultusers.Languge_secondLangName,
+                                                        Languge_thirdLangName = resultusers.Languge_thirdLangName,
+                                                        Languge_forthLangName = resultusers.Languge_forthLangName,
+                                                        Relation = resultusers.Relation,
+                                                        Sport_name = resultusers.Sport_name,
+                                                        Sport_teamName = resultusers.Sport_teamName,
+                                                        Sport_playerName = resultusers.Sport_playerName,
+                                                        Movie_category1Name = resultusers.Movie_category1Name,
+                                                        Movie_category2Name = resultusers.Movie_category2Name,
+                                                        Book_category1Name = resultusers.Book_category1Name,
+                                                        Book_category2Name = resultusers.Book_category2Name,
+                                                        Music_category1Name = resultusers.Music_category1Name,
+                                                        Music_category2Name = resultusers.Music_category2Name,
+                                                        Skill_mainSkillName = resultusers.Skill_mainSkillName,
+                                                        Skill_secondSkillName = resultusers.Skill_secondSkillName,
+                                                        Teach_mainTeachName = resultusers.Teach_mainTeachName,
+                                                        Teach_secondTeachName = resultusers.Teach_secondTeachName
+
+
+
+                                                    });
 
             if (result.Count() == 0)
                 return Ok(Response(false, "not found"));
             else
-                return Ok(result);
+                return Ok(Response(true,"found somthing",result));
         }
 
 
@@ -141,6 +191,16 @@ namespace hamgooonWebServerV1.Controllers
         {
             return new
             {
+                status = status,
+                massage = msg
+            };
+        }
+
+        private object Response(bool status, string msg , IQueryable data)
+        {
+            return new
+            {
+                data = data,
                 status = status,
                 massage = msg
             };
