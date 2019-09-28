@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hamgooonWebServerV1.Data;
 
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    partial class HamgooonContextModelSnapshot : ModelSnapshot
+    [Migration("20190914193224_coverImg")]
+    partial class coverImg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,8 +43,6 @@ namespace hamgooonWebServerV1.Migrations
 
                     b.Property<string>("Body");
 
-                    b.Property<int>("CommentCount");
-
                     b.Property<string>("FirstTag");
 
                     b.Property<string>("FourthTag");
@@ -58,8 +58,6 @@ namespace hamgooonWebServerV1.Migrations
                     b.Property<string>("PostSummary");
 
                     b.Property<long>("PublisherId");
-
-                    b.Property<string>("PublisherProfileImg");
 
                     b.Property<string>("PublisherUsername");
 

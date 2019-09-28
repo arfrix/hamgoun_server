@@ -10,6 +10,7 @@ namespace hamgooonWebServerV1.Models
         public long Id { get; set; }
         public string UniqueUrl { get; set; }
         public long PublisherId { get; set; }
+        public string PublisherProfileImg { get; set; }
         public string PublisherUsername { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
@@ -23,5 +24,7 @@ namespace hamgooonWebServerV1.Models
         public int SubCategory { get; set; }
         public int Kind { get; set; }
         public bool IsDrafted { get; set; }
+        public string coverImgUrl { get; set; }
+        public int CommentCount { get; set; }
     }
 }

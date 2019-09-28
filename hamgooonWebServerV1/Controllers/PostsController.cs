@@ -11,10 +11,20 @@ using hamgooonWebServerV1.Request;
 
 namespace hamgooonWebServerV1.Controllers
 {
+
+    
+
     [Route("[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
     {
+       
+            
+            
+            
+
+
+
         private readonly HamgooonContext _context;
 
         public PostsController(HamgooonContext context)
@@ -99,7 +109,7 @@ namespace hamgooonWebServerV1.Controllers
             else
             {
                 _context.Entry(postShouldToUpdate).CurrentValues.SetValues(post);
-                post.PostSummary = post.Body.Substring(0, (post.Body.Length <= 70 ? post.Body.Length : 70));
+               // post.PostSummary = post.Body.Substring(0, (post.Body.Length <= 70 ? post.Body.Length : 70));
             }
             await _context.SaveChangesAsync();
 
@@ -150,11 +160,11 @@ namespace hamgooonWebServerV1.Controllers
         public async Task<ActionResult<Post>> myPostsList(ReqForMyPostList req)
         {
 
-            var postList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.SubCategory == req.SubCategory).OrderBy(pos => pos.Number);
+            var postList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.SubCategory == req.SubCategory && pos.IsDrafted == false).OrderBy(pos => pos.Number);
             if (postList.Count() == 0)
                 return Ok(Response(false, "there is no post"));
             else
-                return Ok(postList);
+                return Ok(Response(true,"found sth",postList));
         }
 
         // POST: Posts
@@ -182,8 +192,23 @@ namespace hamgooonWebServerV1.Controllers
                 return Ok(Response(true,"found somthing",result));
         }
 
+        [HttpGet("newestPosts")]
+        public async Task<ActionResult<Post>> NewestPosts()
+        {
+            //var result = _context.Post.Last();
+            var result = _context.Post.Where(post =>  post.IsDrafted == false).OrderByDescending(post => post.Id).Take(10);
 
 
+
+            return Ok(result);
+        }
+
+        /* [HttpPost("template")]
+         public async Task<ActionResult<String>> PostTemplate(ReqForPostTemplates req)
+         {
+             //return templates[req.MainCategory][req.SubCategory];
+         }
+         */
 
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]

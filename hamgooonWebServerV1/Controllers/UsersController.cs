@@ -33,19 +33,31 @@ namespace hamgooonWebServerV1.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-
-        // GET: api/Users/5
-        [HttpPost("login")]
-        public async Task<ActionResult<long>> login(ReqForLogin req)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(long id)
         {
-            var user =  _context.User.Where(userToFind => userToFind.UserName == req.userName && userToFind.Pass == req.pass).Select(userToSelect => userToSelect.Id);
+            var user = await _context.User.FindAsync(id);
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return user;
+        }
+
+        // GET: api/Users/5
+        [HttpPost("login")]
+        public async Task<ActionResult<long>> login(ReqForLogin req)
+        {
+            var user =  _context.User.Where(userToFind => userToFind.UserName == req.userName && userToFind.Pass == req.pass).Select(userToSelect => userToSelect.Id).FirstOrDefault();
+
+            if (user == 0)
+            {
+                return Ok(Response(false, "not found anyone"));
+            }
+
+            return Ok(Response(true,"fount sb",user));
         }
 
         
@@ -54,10 +66,29 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.User.Add(user);
-            await _context.SaveChangesAsync();
+            var sameUserUserName = _context.User.Where(usertoFind => usertoFind.UserName == user.UserName).Select(userToSelect => userToSelect.Id).FirstOrDefault();
+            if (sameUserUserName != 0)
+            {
+                return Ok(Response(false, "اخه نام کاربریت تکراریه"));
+            }
+            var sameUserEmail = _context.User.Where(usertoFind => usertoFind.Email == user.Email).Select(userToSelect => userToSelect.Id).FirstOrDefault();
+            if (sameUserEmail != 0)
+            {
+                return Ok(Response(false, "اخه ایمیلت تکراریه"));
+            }
+            if (sameUserEmail == 0 && sameUserUserName == 0)
+            {
+                _context.User.Add(user);
+                await _context.SaveChangesAsync();
+                return Ok(Response(true, "fount sb", CreatedAtAction("GetUser", new { id = user.Id }, user)));
+            }
+            else
+                return Ok(Response(false, "something gose wrong"));
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+
+
+
+
         }
 
 
@@ -197,6 +228,24 @@ namespace hamgooonWebServerV1.Controllers
         }
 
         private object Response(bool status, string msg , IQueryable data)
+        {
+            return new
+            {
+                data = data,
+                status = status,
+                massage = msg
+            };
+        }
+        private object Response(bool status, string msg, long data)
+        {
+            return new
+            {
+                data = data,
+                status = status,
+                massage = msg
+            };
+        }
+        private object Response(bool status, string msg, CreatedAtActionResult data)
         {
             return new
             {

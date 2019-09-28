@@ -10,6 +10,20 @@
     <Compile Remove="Migrations\20190801114626_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20190801171946_ralation_table.cs" />
     <Compile Remove="Migrations\20190801171946_ralation_table.Designer.cs" />
+    <Compile Remove="Migrations\20190917235511_server-migration-test.cs" />
+    <Compile Remove="Migrations\20190917235511_server-migration-test.Designer.cs" />
+    <Compile Remove="Migrations\20190918000717_CommentCount.cs" />
+    <Compile Remove="Migrations\20190918000717_CommentCount.Designer.cs" />
+    <Compile Remove="Migrations\20190918001443_CommentCount.cs" />
+    <Compile Remove="Migrations\20190918001443_CommentCount.Designer.cs" />
+    <Compile Remove="Migrations\20190919184122_publisherProfileImg.cs" />
+    <Compile Remove="Migrations\20190919184122_publisherProfileImg.Designer.cs" />
+    <Compile Remove="Migrations\20190919184452_publisherProfileImgONserver.cs" />
+    <Compile Remove="Migrations\20190919184452_publisherProfileImgONserver.Designer.cs" />
+    <Compile Remove="Migrations\20190919184739_publisherProfileImg.cs" />
+    <Compile Remove="Migrations\20190919184739_publisherProfileImg.Designer.cs" />
+    <Compile Remove="Migrations\20190919185030_ppimg.cs" />
+    <Compile Remove="Migrations\20190919185030_ppimg.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
