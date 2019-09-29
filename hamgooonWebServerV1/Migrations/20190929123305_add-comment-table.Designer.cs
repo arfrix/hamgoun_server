@@ -9,8 +9,8 @@ using hamgooonWebServerV1.Data;
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    [Migration("20190929094835_complete-post-local")]
-    partial class completepostlocal
+    [Migration("20190929123305_add-comment-table")]
+    partial class addcommenttable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,6 +117,31 @@ namespace hamgooonWebServerV1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("hamgooonWebServerV1.Models.RatingEvent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("CommentId");
+
+                    b.Property<bool>("IsMizoun");
+
+                    b.Property<bool>("IsNamizoun");
+
+                    b.Property<bool>("IsPostRating");
+
+                    b.Property<long>("JudgeId");
+
+                    b.Property<long>("PostId");
+
+                    b.Property<int>("PostRate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RatingEvent");
                 });
 
             modelBuilder.Entity("hamgooonWebServerV1.Models.Relation", b =>

@@ -36,6 +36,16 @@
     <Compile Remove="Migrations\20190929011834_rating-event-server.Designer.cs" />
     <Compile Remove="Migrations\20190929094503_complete-post.cs" />
     <Compile Remove="Migrations\20190929094503_complete-post.Designer.cs" />
+    <Compile Remove="Migrations\20190929094835_complete-post-local.cs" />
+    <Compile Remove="Migrations\20190929094835_complete-post-local.Designer.cs" />
+    <Compile Remove="Migrations\20190929122230_remove-id-comment.cs" />
+    <Compile Remove="Migrations\20190929122230_remove-id-comment.Designer.cs" />
+    <Compile Remove="Migrations\20190929122446_remove-comment-table.cs" />
+    <Compile Remove="Migrations\20190929122446_remove-comment-table.Designer.cs" />
+    <Compile Remove="Migrations\20190929122822_remove-comment-table-server.cs" />
+    <Compile Remove="Migrations\20190929122822_remove-comment-table-server.Designer.cs" />
+    <Compile Remove="Migrations\20190929123020_add-comment-table.cs" />
+    <Compile Remove="Migrations\20190929123020_add-comment-table.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

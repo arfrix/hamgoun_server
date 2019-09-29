@@ -14,7 +14,7 @@ namespace hamgooonWebServerV1.Models
         //  Parentcomment is id of the comment that we reply to
         public long ParentCommentId { get; set; }
         public string CommentText { get; set; }
-        public int Number { get; set; }
+        
         public int Mizoun { get; set; }
         public int Namizoun { get; set; }
         public string PublisherImg { get; set; }
