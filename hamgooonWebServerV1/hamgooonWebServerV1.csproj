@@ -24,6 +24,14 @@
     <Compile Remove="Migrations\20190919184739_publisherProfileImg.Designer.cs" />
     <Compile Remove="Migrations\20190919185030_ppimg.cs" />
     <Compile Remove="Migrations\20190919185030_ppimg.Designer.cs" />
+    <Compile Remove="Migrations\20190919185338_ppImg.cs" />
+    <Compile Remove="Migrations\20190919185338_ppImg.Designer.cs" />
+    <Compile Remove="Migrations\20190929005318_compelete-comment-on-server.cs" />
+    <Compile Remove="Migrations\20190929005318_compelete-comment-on-server.Designer.cs" />
+    <Compile Remove="Migrations\20190929005532_coment-server.cs" />
+    <Compile Remove="Migrations\20190929005532_coment-server.Designer.cs" />
+    <Compile Remove="Migrations\20190929010706_rating-event.cs" />
+    <Compile Remove="Migrations\20190929010706_rating-event.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

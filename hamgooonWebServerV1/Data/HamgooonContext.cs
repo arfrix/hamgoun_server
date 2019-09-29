@@ -19,6 +19,7 @@ namespace hamgooonWebServerV1.Data
             public DbSet<Post> Post { get; set; }
             public DbSet<hamgooonWebServerV1.Models.Relation> Relation { get; set; }
             public DbSet<hamgooonWebServerV1.Models.Image> Image { get; set; }
+            public DbSet<hamgooonWebServerV1.Models.Comment> Comment { get; set; }
 
         }
     }

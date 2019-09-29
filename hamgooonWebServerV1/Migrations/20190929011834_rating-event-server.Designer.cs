@@ -9,8 +9,8 @@ using hamgooonWebServerV1.Data;
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    [Migration("20190919185338_ppImg")]
-    partial class ppImg
+    [Migration("20190929011834_rating-event-server")]
+    partial class ratingeventserver
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,39 @@ namespace hamgooonWebServerV1.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("hamgooonWebServerV1.Models.Comment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CommentText");
+
+                    b.Property<bool>("IsReply");
+
+                    b.Property<int>("Mizoun");
+
+                    b.Property<int>("Namizoun");
+
+                    b.Property<int>("Number");
+
+                    b.Property<long>("ParentCommentId");
+
+                    b.Property<long>("PostId");
+
+                    b.Property<long>("PublisherId");
+
+                    b.Property<string>("PublisherImg");
+
+                    b.Property<string>("PublisherUsername");
+
+                    b.Property<int>("Score");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Comment");
+                });
 
             modelBuilder.Entity("hamgooonWebServerV1.Models.Image", b =>
                 {
