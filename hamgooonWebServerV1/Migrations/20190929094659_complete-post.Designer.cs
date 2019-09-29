@@ -9,8 +9,8 @@ using hamgooonWebServerV1.Data;
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    [Migration("20190929011834_rating-event-server")]
-    partial class ratingeventserver
+    [Migration("20190929094659_complete-post")]
+    partial class completepost
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,11 +84,15 @@ namespace hamgooonWebServerV1.Migrations
 
                     b.Property<bool>("IsDrafted");
 
+                    b.Property<int>("JudgesCount");
+
                     b.Property<int>("Kind");
 
                     b.Property<int>("MainCategory");
 
                     b.Property<int>("Number");
+
+                    b.Property<double>("PostRate");
 
                     b.Property<string>("PostSummary");
 

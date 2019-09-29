@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace hamgooonWebServerV1.Models
+namespace hamgooonWebServerV1.Migrations
 {
-    public class RatingEvent
+    public partial class completepost : Migration
     {
-        public long Id { get; set; }
-        public long JudgeId { get; set; }
-        public long PostId { get; set; }
-        public long CommentId { get; set; }
-        public bool IsMizoun { get; set; }
-        public bool IsNamizoun { get; set; }
-        public bool IsPostRating { get; set; }
-        public int PostRate { get; set; }
-
-    }
-}
-/* 
-  protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
                 name: "JudgesCount",
@@ -44,4 +29,5 @@ namespace hamgooonWebServerV1.Models
                 name: "PostRate",
                 table: "Post");
         }
-     */
+    }
+}

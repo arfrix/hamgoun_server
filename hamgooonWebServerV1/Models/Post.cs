@@ -26,5 +26,7 @@ namespace hamgooonWebServerV1.Models
         public bool IsDrafted { get; set; }
         public string coverImgUrl { get; set; }
         public int CommentCount { get; set; }
+        public int JudgesCount { get; set; }
+        public double PostRate { get; set; }
     }
 }

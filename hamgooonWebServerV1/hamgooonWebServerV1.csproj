@@ -32,6 +32,10 @@
     <Compile Remove="Migrations\20190929005532_coment-server.Designer.cs" />
     <Compile Remove="Migrations\20190929010706_rating-event.cs" />
     <Compile Remove="Migrations\20190929010706_rating-event.Designer.cs" />
+    <Compile Remove="Migrations\20190929011834_rating-event-server.cs" />
+    <Compile Remove="Migrations\20190929011834_rating-event-server.Designer.cs" />
+    <Compile Remove="Migrations\20190929094503_complete-post.cs" />
+    <Compile Remove="Migrations\20190929094503_complete-post.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
