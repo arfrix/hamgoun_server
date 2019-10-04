@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hamgooonWebServerV1.Data;
 
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    partial class HamgooonContextModelSnapshot : ModelSnapshot
+    [Migration("20190930111152_add-ralation-table")]
+    partial class addralationtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,10 +190,6 @@ namespace hamgooonWebServerV1.Migrations
                     b.Property<bool>("EmailVerifed");
 
                     b.Property<string>("Firstname");
-
-                    b.Property<long>("Hamegyry");
-
-                    b.Property<long>("Hamrahy");
 
                     b.Property<string>("Languge_dialect");
 

@@ -46,6 +46,12 @@
     <Compile Remove="Migrations\20190929122822_remove-comment-table-server.Designer.cs" />
     <Compile Remove="Migrations\20190929123020_add-comment-table.cs" />
     <Compile Remove="Migrations\20190929123020_add-comment-table.Designer.cs" />
+    <Compile Remove="Migrations\20190929124140_add-comment-table-server.cs" />
+    <Compile Remove="Migrations\20190929124140_add-comment-table-server.Designer.cs" />
+    <Compile Remove="Migrations\20190930110940_drop-ralation-table-server.cs" />
+    <Compile Remove="Migrations\20190930110940_drop-ralation-table-server.Designer.cs" />
+    <Compile Remove="Migrations\20190930111332_add-ralation-table-server.cs" />
+    <Compile Remove="Migrations\20190930111332_add-ralation-table-server.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

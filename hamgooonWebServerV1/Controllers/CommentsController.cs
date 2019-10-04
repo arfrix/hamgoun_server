@@ -41,6 +41,24 @@ namespace hamgooonWebServerV1.Controllers
 
             return comment;
         }
+        
+        [HttpGet("GetCommentofPosts/{id}")]
+        public async Task<ActionResult<Comment>> GetCommentofPosts(long id)
+        {
+            List<Comment> orderedCommentlist = new List<Comment>();
+            var shuffledComments =  _context.Comment.Where(comm => comm.PostId == id);
+            foreach(Comment comment in shuffledComments)
+            {
+                if(!comment.IsReply)
+                orderedCommentlist.Add(comment);
+                var replies = shuffledComments.Where(commentToFind => commentToFind.ParentCommentId == comment.Id && commentToFind.IsReply == true);
+                orderedCommentlist.AddRange(replies);
+            }
+
+            
+
+            return Ok(orderedCommentlist);
+        }
 
         // PUT: api/Comments/5
         [HttpPut("{id}")]

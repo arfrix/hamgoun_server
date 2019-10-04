@@ -15,6 +15,8 @@ namespace hamgooonWebServerV1.Models
         public string Email { get; set; }
         public long PhoneNumber { get; set; }
         public string ProfileImgUrl { get; set; }
+        public long Hamegyry { get; set; }
+        public long Hamrahy { get; set; }
 
         public bool PhoneVerifed { get; set; }
         public int SMSCode { get; set; }

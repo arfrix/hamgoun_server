@@ -193,6 +193,17 @@ namespace hamgooonWebServerV1.Controllers
                 return Ok(Response(true,"found somthing",result));
         }
 
+        /*
+        [HttpPost("hamegyry")]
+        public async Task<ActionResult<User>> setHamegyry(ReqForHamegyry req)
+        {
+            long moj = 5;
+            var user = await _context.User.FindAsync(5);
+            var res = _context.User.Where(tt => tt.UserName == "ff");
+
+            return Ok(res);
+        }
+        */
 
 
         // DELETE: api/Users/5

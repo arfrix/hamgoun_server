@@ -103,7 +103,7 @@ namespace hamgooonWebServerV1.Controllers
         public async Task<ActionResult<Post>> UpdatePost(Post post)
         {
 
-            Post postShouldToUpdate = _context.Post.Find(post.Id);
+            Post postShouldToUpdate = await _context.Post.FindAsync(post.Id);
             if (postShouldToUpdate == null)
                 return Ok(Response(false, "there is not such post with this id"));
             else
@@ -202,6 +202,34 @@ namespace hamgooonWebServerV1.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("hamegyry")]
+        public async Task<ActionResult<Post>> PostHamegyry(ReqForHamegyry req)
+        {
+           
+            var resultPost =     _context.Post.Where(post => post.Id == req.PostId).FirstOrDefault();
+            
+            //var postToFind = _context.Post.Where(postToQuery => postToQuery.Id == 1).FirstOrDefault();
+
+            if (resultPost != null)
+            {
+                var publisher = _context.User.Where(user => user.Id == resultPost.PublisherId).FirstOrDefault();
+                if (publisher != null)
+                {
+                    if (publisher.Hamegyry == null) { 
+                       publisher.Hamegyry = 1;
+                    }else
+                    publisher.Hamegyry += 1;
+                }
+                    
+            }
+
+            await _context.SaveChangesAsync();
+            
+            return Ok();
+
+        }
+         
 
         /* [HttpPost("template")]
          public async Task<ActionResult<String>> PostTemplate(ReqForPostTemplates req)
