@@ -72,7 +72,7 @@ namespace hamgooonWebServerV1.Controllers
             return CreatedAtAction("GetRelation", new { id = relation.Id }, relation);
         }
         // POST: api/Relations
-        [HttpPost]
+        [HttpPost("/delete")]
         public async Task<ActionResult<Relation>> DeleteRelation(Relation relation)
         {
             var relationtoDelete = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId

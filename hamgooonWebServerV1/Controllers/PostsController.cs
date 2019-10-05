@@ -143,7 +143,8 @@ namespace hamgooonWebServerV1.Controllers
                         IEnumerable<Post> toAdd = _context.Post.Where(post => post.PublisherId == rel.FollowedId 
                                                                 && post.MainCategory == rel.MainCategory 
                                                                 && post.SubCategory == rel.SubCategory 
-                                                                && post.Number == rel.LastSeenPostNumber);
+                                                                && post.Number == rel.LastSeenPostNumber
+                                                                && post.IsDrafted == false);
                         postlist.AddRange(toAdd);
                        
                        
