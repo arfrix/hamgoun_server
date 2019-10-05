@@ -32,18 +32,28 @@ namespace hamgooonWebServerV1
             services.AddDbContext<HamgooonContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //cause CORS problem
+            /*
             services.AddHttpsRedirection(options =>
             {
                 options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
                 options.HttpsPort = 5001;
             });
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env , HamgooonContext context)
         {
             // context.Database.Migrate();
-            app.UseHttpsRedirection();
+
+
+
+
+            //cause CORS problem
+            // app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
