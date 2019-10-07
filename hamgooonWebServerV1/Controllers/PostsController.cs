@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using hamgooonWebServerV1.Data;
 using hamgooonWebServerV1.Models;
 using hamgooonWebServerV1.Request;
+using hamgooonWebServerV1.processes;
 
 namespace hamgooonWebServerV1.Controllers
 {
@@ -37,6 +38,17 @@ namespace hamgooonWebServerV1.Controllers
         public async Task<ActionResult<IEnumerable<Post>>> GetPost()
         {
             return await _context.Post.ToListAsync();
+        }
+
+        [HttpGet("testEncode/{num}")]
+        public async Task<ActionResult<IEnumerable<Post>>> encoder(long num)
+        {
+
+            
+            string encoded = Base62Converter.LongToBase(num);
+            //var decoded = base62Converter.Decode(encoded);
+           // Console.WriteLine(decoded);
+            return Ok(encoded);
         }
 
         // GET: Posts/5
@@ -84,12 +96,15 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost(Post post)
         {
-            post.UniqueUrl = Guid.NewGuid().ToString();
+            var lastPost = _context.Post.Where(postToFind => postToFind.IsDrafted == false).OrderByDescending(postToDes => postToDes.Id).First();
+            var lastPostNumber = Base62Converter.BaseToLong(lastPost.UniqueUrl);
+            post.UniqueUrl = Base62Converter.LongToBase(lastPostNumber + 1);
             _context.Post.Add(post);
             
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPost", new { id = post.Id }, post);
+           
         }
 
 
