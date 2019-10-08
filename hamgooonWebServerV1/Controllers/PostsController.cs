@@ -40,15 +40,13 @@ namespace hamgooonWebServerV1.Controllers
             return await _context.Post.ToListAsync();
         }
 
-        [HttpGet("testEncode/{num}")]
-        public async Task<ActionResult<IEnumerable<Post>>> encoder(long num)
+        [HttpGet("getPostByUrl/{url}")]
+        public async Task<ActionResult<IEnumerable<Post>>> getPostByUrl(string  url)
         {
-
+            var result = _context.Post.Where(post => post.coverImgUrl == url).First();
             
-            string encoded = Base62Converter.LongToBase(num);
-            //var decoded = base62Converter.Decode(encoded);
-           // Console.WriteLine(decoded);
-            return Ok(encoded);
+            
+            return Ok(result);
         }
 
         // GET: Posts/5
