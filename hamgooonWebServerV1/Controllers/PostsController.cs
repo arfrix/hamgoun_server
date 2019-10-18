@@ -142,7 +142,7 @@ namespace hamgooonWebServerV1.Controllers
                                                         && relation.SubCategory == req.SubCategory).OrderByDescending(rel => rel.EngagementRate);
             foreach(Relation rel in relations)
             {
-                                          var tempGap = rel.TotalPostNumber - rel.LastSeenPostNumber;
+                var tempGap = rel.TotalPostNumber - rel.LastSeenPostNumber;
                 if (bigestGap < tempGap)
                     bigestGap = tempGap;
             }
@@ -166,6 +166,27 @@ namespace hamgooonWebServerV1.Controllers
 
             return Ok(postlist);
             
+        }
+         [HttpPost("followedNewPosts")]
+         public async Task<ActionResult<Post>> followingNewPosts (ReqForFollowedNewPosts req)
+        {
+
+            List<Post> followedUserPostlist = new List<Post>();
+
+            var relations = _context.Relation.Where(relation => relation.FollowerId == req.FollowerId
+                                                        && relation.MainCategory == req.MainCategory
+                                                        && relation.SubCategory == req.SubCategory).OrderByDescending(rel => rel.EngagementRate);
+            foreach (Relation rel in relations)
+            {
+                List<Post> postlist = _context.Post.Where(postsToFind => postsToFind.PublisherId == rel.FollowedId && postsToFind.IsDrafted == false &&  postsToFind.MainCategory == rel.MainCategory).OrderByDescending(pos => pos.Number).ToList();
+                if(postlist.Count() > req.Layer)
+                    followedUserPostlist.Add( postlist[req.Layer - 1]);
+
+            }
+            if (followedUserPostlist.Count() > 0)
+                return Ok(Response(true, "found sth", followedUserPostlist));
+            else
+                return Ok(Response(false, "پستی وجود نداره !"));
         }
 
 
@@ -281,6 +302,15 @@ namespace hamgooonWebServerV1.Controllers
             };
         }
         private object Response(bool status, string msg, IQueryable data)
+        {
+            return new
+            {
+                data = data,
+                status = status,
+                massage = msg
+            };
+        }
+        private object Response(bool status, string msg, List<Post> data)
         {
             return new
             {
