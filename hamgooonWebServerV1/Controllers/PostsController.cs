@@ -207,7 +207,7 @@ namespace hamgooonWebServerV1.Controllers
         public async Task<ActionResult<Post>> DraftList(ReqForDraftList req)
         {
 
-            var draftedList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.SubCategory == req.SubCategory && pos.IsDrafted == true);
+            var draftedList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory  && pos.IsDrafted == true);
             if (draftedList.Count() == 0)
                 return Ok(Response(false, "there is no drafted post"));
             else
