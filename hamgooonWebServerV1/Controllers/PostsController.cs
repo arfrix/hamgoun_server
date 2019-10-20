@@ -218,8 +218,18 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost("search")]
         public async Task<ActionResult<Post>> PostSearch(ReqForSearch req)
         {
+            System.Linq.IQueryable<Post> result = null;
 
-            var result = _context.Post.Where(pos => pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) || pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) || pos.FourthTag.Contains(req.KeyWord));
+            if(req.MainCat == -1)
+            {
+                 result = _context.Post.Where(pos => pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) || pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) || pos.FourthTag.Contains(req.KeyWord)).Where(posts => posts.IsDrafted == false);
+            }
+            else
+            {
+                 result = _context.Post.Where(pos => pos.MainCategory == req.MainCat && pos.IsDrafted == false).Where(pos => pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) || pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) || pos.FourthTag.Contains(req.KeyWord));
+            }
+                
+
 
             if (result.Count() == 0)
                 return Ok(Response(false, "not found"));
