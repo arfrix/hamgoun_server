@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using hamgooonWebServerV1.Data;
 using hamgooonWebServerV1.Models;
 using hamgooonWebServerV1.Request;
+using System.Net.Mail;
 
 namespace hamgooonWebServerV1.Controllers
 {
@@ -193,17 +194,40 @@ namespace hamgooonWebServerV1.Controllers
                 return Ok(Response(true,"found somthing",result));
         }
 
-        /*
-        [HttpPost("hamegyry")]
-        public async Task<ActionResult<User>> setHamegyry(ReqForHamegyry req)
+       [HttpPost("sendEmail")]
+       public async Task<ActionResult<User>> sendEmail(ReqForEmail req)
         {
-            long moj = 5;
-            var user = await _context.User.FindAsync(5);
-            var res = _context.User.Where(tt => tt.UserName == "ff");
 
-            return Ok(res);
+
+
+            MailMessage msg = new MailMessage();
+
+            msg.From = new MailAddress("hamgounteam@gmail.com");
+            msg.To.Add("arfa.maddi1376@gmail.com");
+            msg.Subject = "test";
+            msg.Body = "Test Content";
+            //msg.Priority = MailPriority.High;
+
+            try
+            {
+                using (SmtpClient client = new SmtpClient())
+                {
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new System.Net.NetworkCredential("hamgounteam@gmail.com", "hamG0uN132");
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                    client.Send(msg);
+                }
+            }catch(Exception ex)
+            {
+                return BadRequest();
+            }
+            
+            return Ok(true);
         }
-        */
 
 
         // DELETE: api/Users/5

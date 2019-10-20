@@ -186,7 +186,7 @@ namespace hamgooonWebServerV1.Controllers
             if (followedUserPostlist.Count() > 0)
                 return Ok(Response(true, "found sth", followedUserPostlist));
             else
-                return Ok(Response(false, "پستی وجود نداره !"));
+                return Ok(Response(false, "!"+" پستی وجود نداره"));
         }
 
 
