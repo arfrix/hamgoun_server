@@ -18,7 +18,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </ItemGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">
-      <Value>Server=DATABASESERVER\HAMGOUNSERVER%3bDatabase=hamgooonDb%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+      <Value>Server=45.82.136.106,2525%3bDatabase=hamgounDb%3bPersist Security Info=True%3bUser ID=AppUser%3bPassword=AppUser</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
 </Project>

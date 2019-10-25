@@ -9,6 +9,6 @@ namespace hamgooonWebServerV1.Request
     {
         public long PublisherId { get; set; }
         public int MainCategory { get; set; }
-        public int SubCategory { get; set; }
+        
     }
 }
