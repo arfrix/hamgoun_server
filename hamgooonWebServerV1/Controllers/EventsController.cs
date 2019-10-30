@@ -12,27 +12,27 @@ namespace hamgooonWebServerV1.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class RatingEventsController : ControllerBase
+    public class EventsController : ControllerBase
     {
         private readonly HamgooonContext _context;
 
-        public RatingEventsController(HamgooonContext context)
+        public EventsController(HamgooonContext context)
         {
             _context = context;
         }
 
         // GET: api/RatingEvents
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RatingEvent>>> GetRatingEvent()
+        public async Task<ActionResult<IEnumerable<Event>>> GetRatingEvent()
         {
-            return await _context.RatingEvent.ToListAsync();
+            return await _context.Event.ToListAsync();
         }
 
         // GET: api/RatingEvents/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RatingEvent>> GetRatingEvent(long id)
+        public async Task<ActionResult<Event>> GetRatingEvent(long id)
         {
-            var ratingEvent = await _context.RatingEvent.FindAsync(id);
+            var ratingEvent = await _context.Event.FindAsync(id);
 
             if (ratingEvent == null)
             {
@@ -49,10 +49,10 @@ namespace hamgooonWebServerV1.Controllers
 
         // POST: api/RatingEvents
         [HttpPost("Mizoun")]
-        public async Task<ActionResult<RatingEvent>> PostMizoun(RatingEvent ratingEvent)
+        public async Task<ActionResult<Event>> PostMizoun(Event ratingEvent)
         {
-            RatingEvent emty;
-            var relatedEvent = _context.RatingEvent.Where(ratingEventToFind => ratingEventToFind.CommentId == ratingEvent.CommentId && ratingEventToFind.JudgeId == ratingEvent.JudgeId).FirstOrDefault();
+            Event emty;
+            var relatedEvent = _context.Event.Where(ratingEventToFind => ratingEventToFind.CommentId == ratingEvent.CommentId && ratingEventToFind.ActorId == ratingEvent.ActorId).FirstOrDefault();
             if(relatedEvent!= null)
             {
                 if (relatedEvent.IsNamizoun)
@@ -69,7 +69,7 @@ namespace hamgooonWebServerV1.Controllers
                 var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).First();
                 comment.Mizoun += 1;
                 ratingEvent.IsNamizoun = false;
-                _context.RatingEvent.Add(ratingEvent);
+                _context.Event.Add(ratingEvent);
 
                
             }
@@ -90,9 +90,9 @@ namespace hamgooonWebServerV1.Controllers
 
         // POST: api/RatingEvents
         [HttpPost("Namizoun")]
-        public async Task<ActionResult<RatingEvent>> PostNamizoun(RatingEvent ratingEvent)
+        public async Task<ActionResult<Event>> PostNamizoun(Event ratingEvent)
         {
-            var relatedEvent = _context.RatingEvent.Where(ratingEventToFind => ratingEventToFind.CommentId == ratingEvent.CommentId && ratingEventToFind.JudgeId == ratingEvent.JudgeId).FirstOrDefault();
+            var relatedEvent = _context.Event.Where(ratingEventToFind => ratingEventToFind.CommentId == ratingEvent.CommentId && ratingEventToFind.ActorId == ratingEvent.ActorId).FirstOrDefault();
             if (relatedEvent != null)
             {
                 if (relatedEvent.IsMizoun)
@@ -109,7 +109,7 @@ namespace hamgooonWebServerV1.Controllers
                 var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).First();
                 comment.Namizoun += 1;
                 ratingEvent.IsMizoun = false;
-                _context.RatingEvent.Add(ratingEvent);
+                _context.Event.Add(ratingEvent);
 
 
             }
@@ -130,17 +130,17 @@ namespace hamgooonWebServerV1.Controllers
 
         // POST: api/RatingEvents
         [HttpPost("PostRating")]
-        public async Task<ActionResult<RatingEvent>> PostPostRating(RatingEvent ratingEvent)
+        public async Task<ActionResult<Event>> PostPostRating(Event ratingEvent)
         {
 
             var post = await _context.Post.FindAsync(ratingEvent.PostId);
 
             if(post!= null)
             {
-                var relatedEvent = _context.RatingEvent.Where(ratingEventToFind => ratingEventToFind.PostId == ratingEvent.PostId && ratingEventToFind.JudgeId == ratingEvent.JudgeId).FirstOrDefault();
+                var relatedEvent = _context.Event.Where(ratingEventToFind => ratingEventToFind.PostId == ratingEvent.PostId && ratingEventToFind.ActorId == ratingEvent.ActorId).FirstOrDefault();
                 if(relatedEvent == null)
                 {
-                    _context.RatingEvent.Add(ratingEvent);
+                    _context.Event.Add(ratingEvent);
                     post.PostRate = ((post.JudgesCount * post.PostRate) + ratingEvent.PostRate) / (post.JudgesCount + 1);
 
                     post.JudgesCount += 1;
@@ -169,15 +169,15 @@ namespace hamgooonWebServerV1.Controllers
 
         // DELETE: api/RatingEvents/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<RatingEvent>> DeleteRatingEvent(long id)
+        public async Task<ActionResult<Event>> DeleteRatingEvent(long id)
         {
-            var ratingEvent = await _context.RatingEvent.FindAsync(id);
+            var ratingEvent = await _context.Event.FindAsync(id);
             if (ratingEvent == null)
             {
                 return NotFound();
             }
 
-            _context.RatingEvent.Remove(ratingEvent);
+            _context.Event.Remove(ratingEvent);
             await _context.SaveChangesAsync();
 
             return ratingEvent;
@@ -185,7 +185,7 @@ namespace hamgooonWebServerV1.Controllers
 
         private bool RatingEventExists(long id)
         {
-            return _context.RatingEvent.Any(e => e.Id == id);
+            return _context.Event.Any(e => e.Id == id);
         }
         private object Response(bool status, string msg)
         {

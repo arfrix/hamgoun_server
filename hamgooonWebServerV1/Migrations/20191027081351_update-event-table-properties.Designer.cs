@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hamgooonWebServerV1.Data;
 
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    partial class HamgooonContextModelSnapshot : ModelSnapshot
+    [Migration("20191027081351_update-event-table-properties")]
+    partial class updateeventtableproperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,8 +124,6 @@ namespace hamgooonWebServerV1.Migrations
                     b.Property<double>("PostRate");
 
                     b.Property<string>("PostSummary");
-
-                    b.Property<string>("PostType");
 
                     b.Property<long>("PublisherId");
 

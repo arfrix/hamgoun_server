@@ -20,7 +20,7 @@ namespace hamgooonWebServerV1.Data
             public DbSet<hamgooonWebServerV1.Models.Relation> Relation { get; set; }
             public DbSet<hamgooonWebServerV1.Models.Image> Image { get; set; }
             public DbSet<hamgooonWebServerV1.Models.Comment> Comment { get; set; }
-            public DbSet<hamgooonWebServerV1.Models.RatingEvent> RatingEvent { get; set; }
+            public DbSet<hamgooonWebServerV1.Models.Event> Event { get; set; }
 
         }
     }

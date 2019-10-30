@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hamgooonWebServerV1.Data;
 
 namespace hamgooonWebServerV1.Migrations
 {
     [DbContext(typeof(HamgooonContext))]
-    partial class HamgooonContextModelSnapshot : ModelSnapshot
+    [Migration("20191026130936_change-ratingEvent-table-name")]
+    partial class changeratingEventtablename
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,37 +49,6 @@ namespace hamgooonWebServerV1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comment");
-                });
-
-            modelBuilder.Entity("hamgooonWebServerV1.Models.Event", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("ActorId");
-
-                    b.Property<long>("CommentId");
-
-                    b.Property<bool>("IsComment");
-
-                    b.Property<bool>("IsCommentReply");
-
-                    b.Property<bool>("IsMizoun");
-
-                    b.Property<bool>("IsNamizoun");
-
-                    b.Property<bool>("IsPostRating");
-
-                    b.Property<long>("PostId");
-
-                    b.Property<int>("PostRate");
-
-                    b.Property<long>("ReactorId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Event");
                 });
 
             modelBuilder.Entity("hamgooonWebServerV1.Models.Image", b =>
@@ -123,8 +94,6 @@ namespace hamgooonWebServerV1.Migrations
 
                     b.Property<string>("PostSummary");
 
-                    b.Property<string>("PostType");
-
                     b.Property<long>("PublisherId");
 
                     b.Property<string>("PublisherProfileImg");
@@ -146,6 +115,31 @@ namespace hamgooonWebServerV1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("hamgooonWebServerV1.Models.RatingEvent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("CommentId");
+
+                    b.Property<bool>("IsMizoun");
+
+                    b.Property<bool>("IsNamizoun");
+
+                    b.Property<bool>("IsPostRating");
+
+                    b.Property<long>("JudgeId");
+
+                    b.Property<long>("PostId");
+
+                    b.Property<int>("PostRate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RatingEvent");
                 });
 
             modelBuilder.Entity("hamgooonWebServerV1.Models.Relation", b =>

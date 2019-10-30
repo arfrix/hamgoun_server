@@ -52,15 +52,26 @@
     <Compile Remove="Migrations\20190930110940_drop-ralation-table-server.Designer.cs" />
     <Compile Remove="Migrations\20190930111332_add-ralation-table-server.cs" />
     <Compile Remove="Migrations\20190930111332_add-ralation-table-server.Designer.cs" />
+    <Compile Remove="Migrations\20191026132136_change-ratingEvent-table-on-server.cs" />
+    <Compile Remove="Migrations\20191026132136_change-ratingEvent-table-on-server.Designer.cs" />
+    <Compile Remove="Migrations\20191027080211_Event-table-upadeted.cs" />
+    <Compile Remove="Migrations\20191027080211_Event-table-upadeted.Designer.cs" />
+    <Compile Remove="Migrations\20191027082007_update-event-table-properties-server.cs" />
+    <Compile Remove="Migrations\20191027082007_update-event-table-properties-server.Designer.cs" />
+    <Compile Remove="Migrations\20191027090127_add-postType-to-post-server.cs" />
+    <Compile Remove="Migrations\20191027090127_add-postType-to-post-server.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework.SqlServerCompact" Version="6.2.0" />
+    <PackageReference Include="ImageProcessor" Version="2.7.0.100" />
+    <PackageReference Include="ImageProcessor.Plugins.WebP" Version="1.2.0.100" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using hamgooonWebServerV1.Data;
 using hamgooonWebServerV1.Models;
+using ImageProcessor;
+using ImageProcessor.Plugins.WebP.Imaging.Formats;
 using System.IO;
 
 namespace hamgooonWebServerV1.Controllers
@@ -74,9 +76,11 @@ namespace hamgooonWebServerV1.Controllers
 
             //< get Path >
 
-            string path_Root = _appEnvironment.WebRootPath;
+            string imagesPath = Path.Combine(_appEnvironment.WebRootPath, "images");
+            string webPFileName = Path.GetFileNameWithoutExtension( Uri.EscapeDataString(file.FileName)) + ".webp";
+           // string normalImagePath = Path.Combine(imagesPath, image.FileName);
+            string webPImagePath = Path.Combine(imagesPath, webPFileName);
 
-            string path_to_Images = path_Root + "\\Images\\" + file.FileName;
 
             //</ get Path >
 
@@ -84,13 +88,18 @@ namespace hamgooonWebServerV1.Controllers
 
             //< Copy File to Target >
 
-            using (var stream = new FileStream(path_to_Images, FileMode.Create))
 
+            using (FileStream webPFileStream = new FileStream(webPImagePath, FileMode.Create))
             {
-
-                await file.CopyToAsync(stream);
-
+                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false))
+                {
+                    imageFactory.Load(file.OpenReadStream())
+                                .Format(new WebPFormat())
+                                .Quality(90)
+                                .Save(webPFileStream);
+                }
             }
+
 
             //</ Copy File to Target >
 
@@ -100,7 +109,7 @@ namespace hamgooonWebServerV1.Controllers
 
 
 
-            return Ok(file.FileName.ToString());
+            return Ok(webPFileName);
 
 
         }

@@ -15,6 +15,7 @@ namespace hamgooonWebServerV1.Models
         public string Title { get; set; }
         public string Body { get; set; }
         public string PostSummary { get; set; }
+        public string PostType { get; set; }
         public string FirstTag { get; set; }
         public string SecondTag { get; set; }
         public string ThirdTag { get; set; }
