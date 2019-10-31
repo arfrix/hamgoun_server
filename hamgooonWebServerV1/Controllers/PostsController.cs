@@ -179,10 +179,15 @@ namespace hamgooonWebServerV1.Controllers
             foreach (Relation rel in relations)
             {
                 List<Post> postlist = _context.Post.Where(postsToFind => postsToFind.PublisherId == rel.FollowedId && postsToFind.IsDrafted == false &&  postsToFind.MainCategory == rel.MainCategory).OrderByDescending(pos => pos.Number).ToList();
-                if(postlist.Count() > req.Layer)
-                    followedUserPostlist.Add( postlist[req.Layer - 1]);
+                
+                // alan post haye kasayi ke follow shon kardera ro poshet sar ham rihkte yany 10 ta post hassan bad 7 ta post mamad
+                foreach (Post post in postlist)
+                    followedUserPostlist.Add(post);
 
             }
+            // hala miad posta ro bar hasb id moratab mikone tory ke  id bozorgtara aval bashan va intory engary darym be tartib jadid boodan moratab mikonim
+            followedUserPostlist = followedUserPostlist.OrderByDescending(pos => pos.Id).ToList();
+
             if (followedUserPostlist.Count() > 0)
                 return Ok(Response(true, "found sth", followedUserPostlist));
             else
@@ -195,7 +200,7 @@ namespace hamgooonWebServerV1.Controllers
         public async Task<ActionResult<Post>> myPostsList(ReqForMyPostList req)
         {
 
-            var postList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.SubCategory == req.SubCategory && pos.IsDrafted == false).OrderBy(pos => pos.Number);
+            var postList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory  && pos.IsDrafted == false).OrderBy(pos => pos.Number);
             if (postList.Count() == 0)
                 return Ok(Response(false, "there is no post"));
             else

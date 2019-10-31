@@ -66,10 +66,21 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost]
         public async Task<ActionResult<Relation>> PostRelation(Relation relation)
         {
-            _context.Relation.Add(relation);
-            await _context.SaveChangesAsync();
+            var foundSameRelation = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId && rel.FollowerId == relation.FollowerId && rel.MainCategory == relation.MainCategory).FirstOrDefault();
+            
+            if(foundSameRelation == null)
+            {
+                _context.Relation.Add(relation);
+                await _context.SaveChangesAsync();
+                return Ok(Response(true,"پیگیرش شدی"));
+            }
+            else
+            {
+                return Ok(Response(false, "قبلا پیگیرش شدی"));
+            }
+           
 
-            return CreatedAtAction("GetRelation", new { id = relation.Id }, relation);
+            
         }
         // POST: api/Relations
         [HttpPost("/delete")]
