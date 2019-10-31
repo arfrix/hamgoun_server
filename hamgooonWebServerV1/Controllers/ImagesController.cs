@@ -11,6 +11,7 @@ using hamgooonWebServerV1.Models;
 using ImageProcessor;
 using ImageProcessor.Plugins.WebP.Imaging.Formats;
 using System.IO;
+using ImageProcessor.Imaging.Formats;
 
 namespace hamgooonWebServerV1.Controllers
 {
@@ -78,8 +79,10 @@ namespace hamgooonWebServerV1.Controllers
 
             string imagesPath = Path.Combine(_appEnvironment.WebRootPath, "images");
             string webPFileName = Path.GetFileNameWithoutExtension( Uri.EscapeDataString(file.FileName)) + ".webp";
-           // string normalImagePath = Path.Combine(imagesPath, image.FileName);
+            //string pngFileName = Path.GetFileNameWithoutExtension(Uri.EscapeDataString(file.FileName)) + ".png";
+            // string normalImagePath = Path.Combine(imagesPath, image.FileName);
             string webPImagePath = Path.Combine(imagesPath, webPFileName);
+            //string pngImagePath = Path.Combine(imagesPath, pngFileName);
 
 
             //</ get Path >
@@ -87,15 +90,16 @@ namespace hamgooonWebServerV1.Controllers
 
 
             //< Copy File to Target >
-
+            //ISupportedImageFormat format = new PngFormat { Quality = 50 };
+            ISupportedImageFormat weformat = new WebPFormat { Quality = 50 };
 
             using (FileStream webPFileStream = new FileStream(webPImagePath, FileMode.Create))
             {
-                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false))
+                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false , fixGamma:false))
                 {
                     imageFactory.Load(file.OpenReadStream())
-                                .Format(new WebPFormat())
-                                .Quality(90)
+                                .AutoRotate()
+                                .Format(weformat)
                                 .Save(webPFileStream);
                 }
             }
