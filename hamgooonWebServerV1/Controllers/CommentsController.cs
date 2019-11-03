@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using hamgooonWebServerV1.Data;
 using hamgooonWebServerV1.Models;
+using hamgooonWebServerV1.Request;
 
 namespace hamgooonWebServerV1.Controllers
 {
@@ -41,21 +42,21 @@ namespace hamgooonWebServerV1.Controllers
 
             return comment;
         }
-        
+
         [HttpGet("GetCommentofPosts/{id}")]
         public async Task<ActionResult<Comment>> GetCommentofPosts(long id)
         {
             List<Comment> orderedCommentlist = new List<Comment>();
-            var shuffledComments =  _context.Comment.Where(comm => comm.PostId == id);
-            foreach(Comment comment in shuffledComments)
+            var shuffledComments = _context.Comment.Where(comm => comm.PostId == id);
+            foreach (Comment comment in shuffledComments)
             {
-                if(!comment.IsReply)
-                orderedCommentlist.Add(comment);
+                if (!comment.IsReply)
+                    orderedCommentlist.Add(comment);
                 var replies = shuffledComments.Where(commentToFind => commentToFind.ParentCommentId == comment.Id && commentToFind.IsReply == true);
                 orderedCommentlist.AddRange(replies);
             }
 
-            
+
 
             return Ok(orderedCommentlist);
         }
@@ -92,12 +93,39 @@ namespace hamgooonWebServerV1.Controllers
 
         // POST: api/Comments
         [HttpPost]
-        public async Task<ActionResult<Comment>> PostComment(Comment comment)
+        public async Task<ActionResult<Comment>> PostComment(ReqForPostComment req)
         {
-            _context.Comment.Add(comment);
+            Event eventToAdd = new Event();
+            _context.Comment.Add(req.Comment);
+
+
+            if (req.Comment.IsReply)
+            {
+
+                eventToAdd.IsCommentReply = true;
+                eventToAdd.ReactorId = req.ParentCommentPublisherId;
+                //eventToAdd.CommentId = req.Comment.Id;
+                eventToAdd.ActorId = req.Comment.PublisherId;
+                eventToAdd.PostId = req.Comment.PostId;
+
+                //!! we must add another event to aware postpublisher of reply becaause reply is another comment for his/her post
+
+                _context.Event.Add(eventToAdd);
+            }
+            else
+            {
+                eventToAdd.IsComment = true;
+                eventToAdd.ReactorId = req.PostPublisherId;
+                //eventToAdd.CommentId = req.Comment.Id;
+                eventToAdd.ActorId = req.Comment.PublisherId;
+                eventToAdd.PostId = req.Comment.PostId;
+
+                _context.Event.Add(eventToAdd);
+            }
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComment", new { id = comment.Id }, comment);
+            return CreatedAtAction("GetComment", new { id = req.Comment.Id }, req.Comment);
         }
 
         // DELETE: api/Comments/5

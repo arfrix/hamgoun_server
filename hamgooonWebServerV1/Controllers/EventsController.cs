@@ -42,7 +42,18 @@ namespace hamgooonWebServerV1.Controllers
             return ratingEvent;
         }
 
-       
+        [HttpGet("notif/{whoseNotif}")]
+        public async Task<ActionResult<Event>> GetNotif(long whoseNotif)
+        {
+            var notif = _context.Event.Where(notifToFind => notifToFind.ReactorId == whoseNotif);
+
+            if (notif.Count() == 0)
+            {
+                return Ok(Response(false,"چیزی موجود نبود"));
+            }
+
+            return Ok(Response(true,"",notif));
+        }
 
 
 
@@ -196,6 +207,15 @@ namespace hamgooonWebServerV1.Controllers
             };
         }
         private object Response(bool status, string msg, double data)
+        {
+            return new
+            {
+                data = data,
+                status = status,
+                massage = msg
+            };
+        }
+        private object Response(bool status, string msg, IQueryable data)
         {
             return new
             {
