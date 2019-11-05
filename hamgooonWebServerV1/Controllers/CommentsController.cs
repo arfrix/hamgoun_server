@@ -107,6 +107,8 @@ namespace hamgooonWebServerV1.Controllers
                 //eventToAdd.CommentId = req.Comment.Id;
                 eventToAdd.ActorId = req.Comment.PublisherId;
                 eventToAdd.PostId = req.Comment.PostId;
+                eventToAdd.ActorUsername = req.Comment.PublisherUsername;
+                eventToAdd.ActorImgUrl = req.Comment.PublisherImg;
 
                 //!! we must add another event to aware postpublisher of reply becaause reply is another comment for his/her post
 
@@ -119,6 +121,8 @@ namespace hamgooonWebServerV1.Controllers
                 //eventToAdd.CommentId = req.Comment.Id;
                 eventToAdd.ActorId = req.Comment.PublisherId;
                 eventToAdd.PostId = req.Comment.PostId;
+                eventToAdd.ActorUsername = req.Comment.PublisherUsername;
+                eventToAdd.ActorImgUrl = req.Comment.PublisherImg;
 
                 _context.Event.Add(eventToAdd);
             }

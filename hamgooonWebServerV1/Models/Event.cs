@@ -9,6 +9,8 @@ namespace hamgooonWebServerV1.Models
     {
         public long Id { get; set; }
         public long ActorId { get; set; }
+        public string ActorUsername { get; set; }
+        public string ActorImgUrl { get; set; }
         public long ReactorId { get; set; }
         public long PostId { get; set; }
         public long CommentId { get; set; }

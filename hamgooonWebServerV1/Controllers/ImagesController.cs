@@ -91,7 +91,7 @@ namespace hamgooonWebServerV1.Controllers
 
             //< Copy File to Target >
             //ISupportedImageFormat format = new PngFormat { Quality = 50 };
-            ISupportedImageFormat weformat = new WebPFormat { Quality = 50 };
+            ISupportedImageFormat weformat = new WebPFormat { Quality = 30 };
 
             using (FileStream webPFileStream = new FileStream(webPImagePath, FileMode.Create))
             {

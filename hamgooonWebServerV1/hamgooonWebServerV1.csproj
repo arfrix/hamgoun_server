@@ -60,6 +60,8 @@
     <Compile Remove="Migrations\20191027082007_update-event-table-properties-server.Designer.cs" />
     <Compile Remove="Migrations\20191027090127_add-postType-to-post-server.cs" />
     <Compile Remove="Migrations\20191027090127_add-postType-to-post-server.Designer.cs" />
+    <Compile Remove="Migrations\20191105060534_add-actorUsername-and-actorImgurl-events-server.cs" />
+    <Compile Remove="Migrations\20191105060534_add-actorUsername-and-actorImgurl-events-server.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
