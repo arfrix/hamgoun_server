@@ -23,7 +23,7 @@ namespace hamgooonWebServerV1
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<HamgooonContext>();
+                    var context = services.GetRequiredService<HamgooonMySQLContext>();
                     
                 }
                 catch (Exception ex)

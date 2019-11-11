@@ -8,9 +8,9 @@ using hamgooonWebServerV1.Models;
 namespace hamgooonWebServerV1.Data
 {
     
-        public class HamgooonContext : DbContext
+        public class HamgooonMySQLContext : DbContext
         {
-            public HamgooonContext(DbContextOptions<HamgooonContext> options)
+            public HamgooonMySQLContext(DbContextOptions<HamgooonMySQLContext> options)
             : base(options)
         {
         }

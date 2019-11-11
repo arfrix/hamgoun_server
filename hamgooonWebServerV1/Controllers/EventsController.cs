@@ -14,9 +14,9 @@ namespace hamgooonWebServerV1.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private readonly HamgooonContext _context;
+        private readonly HamgooonMySQLContext _context;
 
-        public EventsController(HamgooonContext context)
+        public EventsController(HamgooonMySQLContext context)
         {
             _context = context;
         }

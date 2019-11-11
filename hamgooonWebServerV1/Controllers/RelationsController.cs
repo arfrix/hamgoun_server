@@ -14,9 +14,9 @@ namespace hamgooonWebServerV1.Controllers
     [ApiController]
     public class RelationsController : ControllerBase
     {
-        private readonly HamgooonContext _context;
+        private readonly HamgooonMySQLContext _context;
 
-        public RelationsController(HamgooonContext context)
+        public RelationsController(HamgooonMySQLContext context)
         {
             _context = context;
         }

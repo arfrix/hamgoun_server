@@ -16,9 +16,9 @@ namespace hamgooonWebServerV1.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly HamgooonContext _context;
+        private readonly HamgooonMySQLContext _context;
 
-        public UsersController(HamgooonContext context)
+        public UsersController(HamgooonMySQLContext context)
         {
             _context = context;
         }

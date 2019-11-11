@@ -26,9 +26,9 @@ namespace hamgooonWebServerV1.Controllers
 
 
 
-        private readonly HamgooonContext _context;
+        private readonly HamgooonMySQLContext _context;
 
-        public PostsController(HamgooonContext context)
+        public PostsController(HamgooonMySQLContext context)
         {
             _context = context;
         }

@@ -11,3 +11,4 @@ services:
         ports: "3306:3306"
         environment:
             MYSQL_ROOT_PASSWORD: "ShIn3Ony0uCRazYDi@m0nd"
+            MYSQL_DATABASE: "hamgounDb"

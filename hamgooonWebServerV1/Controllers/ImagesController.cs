@@ -21,8 +21,8 @@ namespace hamgooonWebServerV1.Controllers
     {
 
         private readonly IHostingEnvironment _appEnvironment;
-        private readonly HamgooonContext _context;
-        public ImagesController(IHostingEnvironment appEnvironment, HamgooonContext context)
+        private readonly HamgooonMySQLContext _context;
+        public ImagesController(IHostingEnvironment appEnvironment, HamgooonMySQLContext context)
 
         {
 

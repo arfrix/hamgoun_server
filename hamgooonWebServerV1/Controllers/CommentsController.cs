@@ -15,9 +15,9 @@ namespace hamgooonWebServerV1.Controllers
     [ApiController]
     public class CommentsController : ControllerBase
     {
-        private readonly HamgooonContext _context;
+        private readonly HamgooonMySQLContext _context;
 
-        public CommentsController(HamgooonContext context)
+        public CommentsController(HamgooonMySQLContext context)
         {
             _context = context;
         }
