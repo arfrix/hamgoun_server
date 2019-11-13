@@ -107,7 +107,7 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost("IncreaseLastSeen")]
         public async Task<ActionResult<Relation>> IncreaseLastSeen(Relation relation)
         {
-            var relationToFind = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId && rel.FollowerId == relation.FollowerId && rel.MainCategory == relation.MainCategory && rel.SubCategory == relation.SubCategory).First();
+            var relationToFind = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId && rel.FollowerId == relation.FollowerId && rel.MainCategory == relation.MainCategory && rel.SubCategory == relation.SubCategory).FirstOrDefault();
 
             relationToFind.LastSeenPostNumber += 1;
 
@@ -119,7 +119,7 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost("IncreaseEngagement")]
         public async Task<ActionResult<Relation>> IncreaseEngagement(Relation relation)
         {
-            var relationToFind = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId && rel.FollowerId == relation.FollowerId && rel.MainCategory == relation.MainCategory && rel.SubCategory == relation.SubCategory).First();
+            var relationToFind = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId && rel.FollowerId == relation.FollowerId && rel.MainCategory == relation.MainCategory && rel.SubCategory == relation.SubCategory).FirstOrDefault();
 
             relationToFind.EngagementRate += 1;
 

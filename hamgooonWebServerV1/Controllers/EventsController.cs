@@ -70,14 +70,14 @@ namespace hamgooonWebServerV1.Controllers
                 {
                     relatedEvent.IsMizoun = true;
                     relatedEvent.IsNamizoun = false;
-                    var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).First();
+                    var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).FirstOrDefault();
                     comment.Mizoun += 1;
                     comment.Namizoun -= 1;
                 }
             }
             else
             {
-                var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).First();
+                var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).FirstOrDefault();
                 comment.Mizoun += 1;
                 ratingEvent.IsNamizoun = false;
                 _context.Event.Add(ratingEvent);
@@ -110,14 +110,14 @@ namespace hamgooonWebServerV1.Controllers
                 {
                     relatedEvent.IsMizoun = false;
                     relatedEvent.IsNamizoun = true;
-                    var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).First();
+                    var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).FirstOrDefault();
                     comment.Mizoun -= 1;
                     comment.Namizoun += 1;
                 }
             }
             else
             {
-                var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).First();
+                var comment = _context.Comment.Where(commentToFind => commentToFind.Id == ratingEvent.CommentId).FirstOrDefault();
                 comment.Namizoun += 1;
                 ratingEvent.IsMizoun = false;
                 _context.Event.Add(ratingEvent);

@@ -46,14 +46,25 @@ namespace hamgooonWebServerV1.Controllers
         [HttpGet("GetCommentofPosts/{id}")]
         public async Task<ActionResult<Comment>> GetCommentofPosts(long id)
         {
-            List<Comment> orderedCommentlist = new List<Comment>();
-            var shuffledComments = _context.Comment.Where(comm => comm.PostId == id);
-            foreach (Comment comment in shuffledComments)
+            LinkedList<Comment> orderedCommentlist = new LinkedList<Comment>();
+            
+            var shuffledComments = _context.Comment.Where(comm => comm.PostId == id).ToList();
+            LinkedList<Comment> shuffledCommentslinkedList = new LinkedList<Comment>(shuffledComments);
+
+            while (shuffledCommentslinkedList.Count()>1)
             {
-                if (!comment.IsReply)
-                    orderedCommentlist.Add(comment);
-                var replies = shuffledComments.Where(commentToFind => commentToFind.ParentCommentId == comment.Id && commentToFind.IsReply == true);
-                orderedCommentlist.AddRange(replies);
+                var comment = shuffledCommentslinkedList.First();
+                LinkedListNode<Comment> linkedListNodeComment = new LinkedListNode<Comment>(comment);
+
+                // we expect that Where() in line 50 start from beginig of Comment table if that's not true , it's possible that comment list begin with reply ! =))))
+                orderedCommentlist.AddLast(comment);
+
+                var replies = shuffledComments.Where(commentToFind => commentToFind.ParentCommentId == comment.Id && commentToFind.IsReply == true).ToList();
+                foreach(Comment reply in replies)
+                {
+                    orderedCommentlist.AddLast(reply);
+                    shuffledCommentslinkedList.Remove(reply);
+                }
             }
 
 
@@ -152,5 +163,11 @@ namespace hamgooonWebServerV1.Controllers
         {
             return _context.Comment.Any(e => e.Id == id);
         }
+        private System.Collections.Generic.LinkedListNode<Comment> converter(IEnumerable<Comment> goh)
+        {
+            LinkedListNode<Comment> node = new LinkedListNode<Comment>(goh.First());
+            return node;
+        }
+        
     }
 }

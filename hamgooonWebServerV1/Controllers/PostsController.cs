@@ -94,7 +94,7 @@ namespace hamgooonWebServerV1.Controllers
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost(Post post)
         {
-            var lastPost = _context.Post.OrderByDescending(postToDes => postToDes.Id).First();
+            var lastPost = _context.Post.OrderByDescending(postToDes => postToDes.Id).FirstOrDefault();
             var lastPostNumber = Base62Converter.BaseToLong(lastPost.UniqueUrl);
             post.UniqueUrl = Base62Converter.LongToBase(lastPostNumber + 1);
             _context.Post.Add(post);
