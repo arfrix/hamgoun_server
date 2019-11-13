@@ -47,22 +47,7 @@ namespace hamgooonWebServerV1.Controllers
             return user;
         }
 
-        // GET: api/Users/5
-        [HttpPost("login")]
-        public async Task<ActionResult<long>> login(ReqForLogin req)
-        {
-            var user =  _context.User.Where(userToFind => userToFind.UserName == req.userName && userToFind.Pass == req.pass).Select(userToSelect => userToSelect.Id).FirstOrDefault();
-
-            if (user == 0)
-            {
-                return Ok(Response(false, "not found anyone"));
-            }
-
-            return Ok(Response(true,"fount sb",user));
-        }
-
         
-
         // POST: Users
         [HttpPost("register")]
         public async Task<ActionResult<User>> PostUser(User user)
@@ -70,21 +55,22 @@ namespace hamgooonWebServerV1.Controllers
             var sameUserUserName = _context.User.Where(usertoFind => usertoFind.UserName == user.UserName).Select(userToSelect => userToSelect.Id).FirstOrDefault();
             if (sameUserUserName != 0)
             {
-                return Ok(Response(false, "اخه نام کاربریت تکراریه"));
+                
+                return Ok(Models.Response.NewResponse(false, "اخه نام کاربریت تکراریه"));
             }
             var sameUserEmail = _context.User.Where(usertoFind => usertoFind.Email == user.Email).Select(userToSelect => userToSelect.Id).FirstOrDefault();
             if (sameUserEmail != 0)
             {
-                return Ok(Response(false, "اخه ایمیلت تکراریه"));
+                return Ok(Models.Response.NewResponse(false, "اخه ایمیلت تکراریه"));
             }
             if (sameUserEmail == 0 && sameUserUserName == 0)
             {
                 _context.User.Add(user);
                 await _context.SaveChangesAsync();
-                return Ok(Response(true, "fount sb", CreatedAtAction("GetUser", new { id = user.Id }, user)));
+                return Ok(Models.Response.NewResponse(true, "fount sb", CreatedAtAction("GetUser", new { id = user.Id }, user)));
             }
             else
-                return Ok(Response(false, "something gose wrong"));
+                return Ok(Models.Response.NewResponse(false, "something gose wrong"));
 
 
 
@@ -139,9 +125,9 @@ namespace hamgooonWebServerV1.Controllers
 
 
             if (result.Count() == 0)
-                return Ok(Response(false, "not found"));
+                return Ok(Models.Response.NewResponse(false, "not found"));
             else
-                return Ok(Response(true,"found somthing",result));
+                return Ok(Models.Response.NewResponse(true,"found somthing",result));
         }
 
        [HttpPost("sendEmail")]
@@ -199,45 +185,6 @@ namespace hamgooonWebServerV1.Controllers
         private bool UserExists(long id)
         {
             return _context.User.Any(e => e.Id == id);
-        }
-
-        
-
-        private object Response(bool status, string msg)
-        {
-            return new
-            {
-                status = status,
-                massage = msg
-            };
-        }
-
-        private object Response(bool status, string msg , IQueryable data)
-        {
-            return new
-            {
-                data = data,
-                status = status,
-                massage = msg
-            };
-        }
-        private object Response(bool status, string msg, long data)
-        {
-            return new
-            {
-                data = data,
-                status = status,
-                massage = msg
-            };
-        }
-        private object Response(bool status, string msg, CreatedAtActionResult data)
-        {
-            return new
-            {
-                data = data,
-                status = status,
-                massage = msg
-            };
         }
 
     }
