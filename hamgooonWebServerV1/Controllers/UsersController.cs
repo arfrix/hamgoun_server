@@ -203,42 +203,7 @@ namespace hamgooonWebServerV1.Controllers
 
         
 
-        private object Response(bool status, string msg)
-        {
-            return new
-            {
-                status = status,
-                massage = msg
-            };
-        }
-
-        private object Response(bool status, string msg , IQueryable data)
-        {
-            return new
-            {
-                data = data,
-                status = status,
-                massage = msg
-            };
-        }
-        private object Response(bool status, string msg, long data)
-        {
-            return new
-            {
-                data = data,
-                status = status,
-                massage = msg
-            };
-        }
-        private object Response(bool status, string msg, CreatedAtActionResult data)
-        {
-            return new
-            {
-                data = data,
-                status = status,
-                massage = msg
-            };
-        }
+        
 
     }
 }
