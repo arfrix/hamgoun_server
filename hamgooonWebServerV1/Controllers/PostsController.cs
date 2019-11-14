@@ -27,6 +27,7 @@ namespace hamgooonWebServerV1.Controllers
 
 
         private readonly HamgooonContext _context;
+        private object result;
 
         public PostsController(HamgooonContext context)
         {
@@ -242,11 +243,19 @@ namespace hamgooonWebServerV1.Controllers
                 return Ok(Response(true,"found somthing",result));
         }
 
-        [HttpGet("newestPosts")]
-        public async Task<ActionResult<Post>> NewestPosts()
+        [HttpGet("newestPosts/{mainCat}")]
+        public async Task<ActionResult<Post>> NewestPosts(int mainCat)
         {
-            //var result = _context.Post.Last();
-            var result = _context.Post.Where(post =>  post.IsDrafted == false).OrderByDescending(post => post.Id).Take(10);
+            //var result = '';
+            if(mainCat == -1)
+            {
+                 result = _context.Post.Where(post => post.IsDrafted == false).OrderByDescending(post => post.Id).Take(10);
+            }
+            else
+            {
+                 result = _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat).OrderByDescending(post => post.Id).Take(10);
+            }
+            
 
 
 
