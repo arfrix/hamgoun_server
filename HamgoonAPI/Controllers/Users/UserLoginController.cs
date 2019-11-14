@@ -9,7 +9,7 @@ namespace HamgoonAPI.Controllers.Users
 {
     [Route("login")]
     [ApiController]
-    public class UserLoginController
+    public class UserLoginController : ControllerBase
     {
         private readonly UserLoginService _service;
         public UserLoginController(UserLoginService service)

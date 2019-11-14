@@ -29,11 +29,7 @@ namespace HamgoonAPI.Controllers
         {
             return await _context.User.ToListAsync();
         }
-        [HttpGet("test")]
-        public ActionResult<IEnumerable<string>> test()
-        {
-            return new string[] { "value1", "value2" };
-        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
         {
@@ -45,37 +41,6 @@ namespace HamgoonAPI.Controllers
             }
 
             return user;
-        }
-
-        
-        // POST: Users
-        [HttpPost("register")]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            var sameUserUserName = _context.User.Where(usertoFind => usertoFind.UserName == user.UserName).Select(userToSelect => userToSelect.Id).FirstOrDefault();
-            if (sameUserUserName != 0)
-            {
-                
-                return Ok(Models.Response.NewResponse(false, "اخه نام کاربریت تکراریه"));
-            }
-            var sameUserEmail = _context.User.Where(usertoFind => usertoFind.Email == user.Email).Select(userToSelect => userToSelect.Id).FirstOrDefault();
-            if (sameUserEmail != 0)
-            {
-                return Ok(Models.Response.NewResponse(false, "اخه ایمیلت تکراریه"));
-            }
-            if (sameUserEmail == 0 && sameUserUserName == 0)
-            {
-                _context.User.Add(user);
-                await _context.SaveChangesAsync();
-                return Ok(Models.Response.NewResponse(true, "fount sb", CreatedAtAction("GetUser", new { id = user.Id }, user)));
-            }
-            else
-                return Ok(Models.Response.NewResponse(false, "something gose wrong"));
-
-
-
-
-
         }
 
 
