@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hamgooonWebServerV1", "hamgooonWebServerV1\hamgooonWebServerV1.csproj", "{1627528A-D4E8-4B5D-B358-F381B97C4CD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HamgoonAPI", "HamgoonAPI\HamgoonAPI.csproj", "{1627528A-D4E8-4B5D-B358-F381B97C4CD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
