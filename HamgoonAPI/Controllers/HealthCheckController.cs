@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using HamgoonAPI.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace HamgoonAPI.Controllers
 {
     [Route("health")]
-    
+    [Authorize]
     public class HealthCheckController
     {
         private readonly HamgooonMySQLContext _context;

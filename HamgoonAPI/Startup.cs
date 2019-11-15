@@ -46,7 +46,7 @@ namespace HamgoonAPI
             services.AddMvc(
                 option=> option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var key = Encoding.ASCII.GetBytes("SOMESECRET");
+            var key = Encoding.ASCII.GetBytes("HANSZIMMER-TINAGAO");
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -89,6 +89,8 @@ namespace HamgoonAPI
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+                
+            app.UseAuthentication();
             
             app.UseMvc();
             
