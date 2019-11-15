@@ -13,15 +13,16 @@ namespace HamgoonAPI.Controllers.Users
     [Route("register")]
     public class UserRegisterController : ControllerBase
     {
-        private readonly UserRegisterService _service;
-        public UserRegisterController(UserRegisterService service)
+        private readonly IUserRegisterService _service;
+        public UserRegisterController(IUserRegisterService service)
         {
             _service = service;
         }
         [HttpPost]
-        public async Task<User> Register(User user)
+        public async Task<User> Register([FromBody]User user)
         {
-            return await _service.Register(user);
+            var newuser = await _service.Register(user);
+            return newuser;
         }
     }
 }

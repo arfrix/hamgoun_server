@@ -11,17 +11,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HamgoonAPI.Services.Users
 {
-    [Route("register")]
-    [ApiController]
-    public class UserRegisterService
+    public class UserRegisterService: IUserRegisterService
     {
         private readonly HamgooonMySQLContext _context;
         private readonly IPasswordHasher<User> _hasher;
 
-        public UserRegisterService(HamgooonMySQLContext context, IPasswordHasher<User> hasher)
+        public UserRegisterService(HamgooonMySQLContext context)
         {
             _context = context;
-            _hasher = hasher;
+            _hasher = new HashService();
         }
         public async Task<User> Register(User request)
         {
@@ -33,7 +31,7 @@ namespace HamgoonAPI.Services.Users
             {
                 throw new UserAlreadyExists();
             }
-
+            
             request.Pass = _hasher.HashPassword(request, request.Pass);
             _context.User.Add(request);
             await _context.SaveChangesAsync();

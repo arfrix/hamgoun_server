@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Text;
 using HamgoonAPI.Data;
 using HamgoonAPI.Services;
+using HamgoonAPI.Services.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -31,17 +32,19 @@ namespace HamgoonAPI
                 opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
-        private IServiceCollection configureDeps(IServiceCollection services)
-        {
-            return services.AddTransient<IPasswordHasher<Models.User>, HashService>();
-        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services = this.configureDatabase(services);
             services.AddCors();
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            ////
+            services.AddTransient<IUserRegisterService, UserRegisterService>();
+            services.AddTransient<IUserLoginService, UserLoginService>();
+            services.AddTransient<IPasswordHasher<Models.User>, HashService>();
+            ////
+            services.AddMvc(
+                option=> option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var key = Encoding.ASCII.GetBytes("SOMESECRET");
             services.AddAuthentication(x =>
@@ -70,14 +73,14 @@ namespace HamgoonAPI
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(
-           Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images")),
+           Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/images")),
                 RequestPath = new PathString("/images")
             });
 
             app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images")),
+            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/images")),
                 RequestPath = new PathString("/images")
             });
 
@@ -85,9 +88,8 @@ namespace HamgoonAPI
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
-
+                .AllowAnyHeader());
+            
             app.UseMvc();
             
         }

@@ -11,14 +11,14 @@ namespace HamgoonAPI.Controllers.Users
     [ApiController]
     public class UserLoginController : ControllerBase
     {
-        private readonly UserLoginService _service;
-        public UserLoginController(UserLoginService service)
+        private readonly IUserLoginService _service;
+        public UserLoginController(IUserLoginService service)
         {
             _service = service;
         }
 
         [HttpPost]
-        public async Task<object> Login(UserLoginRequest request)
+        public async Task<object> Login([FromBody]UserLoginRequest request)
         {
             try
             {

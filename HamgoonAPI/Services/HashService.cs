@@ -9,9 +9,13 @@ namespace HamgoonAPI.Services
         public string HashPassword(User _, string password) => BCrypt.Net.BCrypt.HashPassword(password);
 
         public PasswordVerificationResult VerifyHashedPassword
-            (User _, string hashedPassword, string providedPassword) =>
-            BCrypt.Net.BCrypt.HashPassword(providedPassword) == hashedPassword ?
-                PasswordVerificationResult.Success :
-                PasswordVerificationResult.Failed;
+            (User _, string hashedPassword, string providedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword) 
+                ? PasswordVerificationResult.Success
+                : PasswordVerificationResult.Failed;
+                
+            
+        }
     }
 }

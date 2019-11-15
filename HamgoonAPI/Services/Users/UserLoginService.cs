@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HamgoonAPI.Services.Users
 {
-    public class UserLoginService
+    public class UserLoginService: IUserLoginService
     {
         private readonly HamgooonMySQLContext _context;
         private readonly IPasswordHasher<User> _hasher;
@@ -36,7 +36,7 @@ namespace HamgoonAPI.Services.Users
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("SOMESECRET");
+            var key = Encoding.ASCII.GetBytes("HANSZIMMER-TINAGAO");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

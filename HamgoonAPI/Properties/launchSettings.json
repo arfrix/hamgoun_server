@@ -17,10 +17,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "hamgooonWebServerV1": {
+    "HamgoonAPIV1": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/User",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
