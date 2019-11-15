@@ -1,18 +1,15 @@
 version: '2'
 services:
-  app:
-    build: .
-    links:
-      - mysql
-    ports:
-      - "80:80"
-
+#
   mysql:
     image: "percona:8.0"
     environment:
-      MYSQL_ROOT_PASSWORD: 'password'
+      - MYSQL_DATABASE=hamgoonDb
+      - MYSQL_ROOT_PASSWORD=admin
     ports:
       - "3306:3306"
+    expose:
+      - '3306' 
     volumes:
-      - "/mysql_data:/var/lib/mysql"
+      - "./mysql_data:/var/lib/mysql"
   
