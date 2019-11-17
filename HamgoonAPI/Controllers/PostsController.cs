@@ -6,6 +6,7 @@ using HamgoonAPI.Data;
 using HamgoonAPI.Models;
 using HamgoonAPI.processes;
 using HamgoonAPI.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,13 +20,7 @@ namespace HamgoonAPI.Controllers
     [ApiController]
     public class PostsController : ControllerBase
     {
-       
-            
-            
-            
-
-
-
+        
         private readonly HamgooonMySQLContext _context;
         private object result;
 
@@ -33,6 +28,7 @@ namespace HamgoonAPI.Controllers
         {
             _context = context;
         }
+        [Authorize]
 
         // GET: Posts
         [HttpGet]
@@ -49,7 +45,9 @@ namespace HamgoonAPI.Controllers
             
             return Ok(result);
         }
-
+        
+        
+        [Authorize]
         // GET: Posts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Post>> GetPost(long id)
@@ -63,7 +61,8 @@ namespace HamgoonAPI.Controllers
 
             return post;
         }
-
+        
+        [Authorize]
         // GET: Posts/5
         [HttpGet("publish/{id}")]
         public async Task<ActionResult<Post>> PublishPost(long id)
@@ -90,7 +89,7 @@ namespace HamgoonAPI.Controllers
             return Ok(Response(false, "not found post with that id"));
         }
 
-
+        [Authorize]
         // POST: Posts
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost(Post post)
@@ -111,7 +110,7 @@ namespace HamgoonAPI.Controllers
 
 
 
-
+        [Authorize]
         // POST: Posts
         [HttpPost("Update")]
         public async Task<ActionResult<Post>> UpdatePost(Post post)
@@ -129,8 +128,8 @@ namespace HamgoonAPI.Controllers
 
             return Ok(postShouldToUpdate);
         }
-
-
+        
+        [Authorize]
         // POST: Posts
         [HttpPost("notSeenPostList")]
         public async Task<ActionResult<Post>> NotSeenPostList(ReqForNotSeenPostList req)
@@ -168,7 +167,8 @@ namespace HamgoonAPI.Controllers
             return Ok(postlist);
             
         }
-         [HttpPost("followedNewPosts")]
+        [Authorize]
+        [HttpPost("followedNewPosts")]
          public async Task<ActionResult<Post>> followingNewPosts (ReqForFollowedNewPosts req)
         {
 
@@ -197,6 +197,7 @@ namespace HamgoonAPI.Controllers
 
 
         // POST: Posts
+        [Authorize]
         [HttpPost("myPostsList")]
         public async Task<ActionResult<Post>> myPostsList(ReqForMyPostList req)
         {
@@ -209,6 +210,7 @@ namespace HamgoonAPI.Controllers
         }
 
         // POST: Posts
+        [Authorize]
         [HttpPost("draftList")]
         public async Task<ActionResult<Post>> DraftList(ReqForDraftList req)
         {
@@ -262,6 +264,7 @@ namespace HamgoonAPI.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("hamegyry")]
         public async Task<ActionResult<Post>> PostHamegyry(ReqForHamegyry req)
         {
@@ -297,6 +300,7 @@ namespace HamgoonAPI.Controllers
          }
          */
 
+        [Authorize]
         // DELETE: api/Posts/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Post>> DeletePost(long id)

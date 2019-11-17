@@ -9,6 +9,7 @@ using System.Net.Mail;
 using HamgoonAPI.Data;
 using HamgoonAPI.Models;
 using HamgoonAPI.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HamgoonAPI.Controllers
 {
@@ -56,6 +57,7 @@ namespace HamgoonAPI.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
+        [Authorize]
         [HttpPost("search")]
         public async Task<ActionResult<Post>> UserSearch(ReqForSearch req)
         {
