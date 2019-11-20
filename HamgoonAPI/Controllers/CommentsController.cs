@@ -46,19 +46,33 @@ namespace HamgoonAPI.Controllers
         [HttpGet("GetCommentofPosts/{id}")]
         public async Task<ActionResult<Comment>> GetCommentofPosts(long id)
         {
-            List<Comment> orderedCommentlist = new List<Comment>();
-            var shuffledComments = _context.Comment.Where(comm => comm.PostId == id);
-            foreach (Comment comment in shuffledComments)
+            var comments = await _context.Comment.Where(c => c.PostId == id).ToListAsync();
+            var orderedComments = new LinkedList<Comment>();
+            var linkedListNodes = new List<LinkedListNode<Comment>>();
+            foreach (var comment in comments)
             {
                 if (!comment.IsReply)
-                    orderedCommentlist.Add(comment);
-                var replies = shuffledComments.Where(commentToFind => commentToFind.ParentCommentId == comment.Id && commentToFind.IsReply == true);
-                orderedCommentlist.AddRange(replies);
+                {
+                    var node = orderedComments.AddLast(comment);
+                    linkedListNodes.Add(node);
+                    continue;
+                }
+
+                var parent = comments.FirstOrDefault(c => c.Id == comment.ParentCommentId);
+                if (parent == null)
+                {
+                    continue;
+                }
+
+                var parentNode = linkedListNodes.FirstOrDefault(c => c.Value.Id == parent.Id);
+                if (parentNode == null)
+                {
+                    continue;
+                }
+                orderedComments.AddAfter(parentNode, comment);
             }
 
-
-
-            return Ok(orderedCommentlist);
+            return Ok(orderedComments);
         }
 
         // PUT: api/Comments/5
