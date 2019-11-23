@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -48,21 +49,21 @@ namespace HamgoonAPIV1.Services.RocketChat
                 RequestUri = new Uri("http://193.176.241.61:3000/api/v1/users.register")
             };
             var client = _clientFactory.CreateClient();
-            var pairs = new List<KeyValuePair<string, string>>
+            var json = JsonConvert.SerializeObject(new
             {
-                KeyValuePair.Create<string, string>("user", username),
-                KeyValuePair.Create<string, string>("password", pass),
-                KeyValuePair.Create<string, string>("email", email),
-                KeyValuePair.Create<string, string>("name", name),
-            };
-            request.Content = new FormUrlEncodedContent(pairs);
+                username = username,
+                pass = pass,
+                email = email,
+                name = name
+            });
+            request.Content = new StringContent(json, Encoding.Default, "application/json");
             var resp = await client.SendAsync(request);
-            var rocketRegisterResponse =  RocketRegisterResponse.FromJson(await resp.Content.ReadAsStringAsync());
             if (!resp.IsSuccessStatusCode)
             {
-                throw new RocketChatLoginFailed(resp.StatusCode.ToString());
+                var error = JsonConvert.DeserializeObject<RocketChatRegisterError>(await resp.Content.ReadAsStringAsync());
+                throw new RocketChatRegisterFailed(error.Error);
             }
-
+            var rocketRegisterResponse =  RocketRegisterResponse.FromJson(await resp.Content.ReadAsStringAsync());
             return await this.Login(username, pass);
         }
     }
