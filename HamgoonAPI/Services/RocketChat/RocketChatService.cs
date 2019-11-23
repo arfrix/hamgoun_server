@@ -41,6 +41,22 @@ namespace HamgoonAPIV1.Services.RocketChat
             };
         }
 
+        public class RocketChatRegisterPayload
+        {
+            public string username { get; }
+            public string pass { get; }
+            public string email { get; }
+            public string name { get; }
+
+            public RocketChatRegisterPayload(string username, string pass, string email, string name)
+            {
+                this.username = username;
+                this.pass = pass;
+                this.email = email;
+                this.name = name;
+            }
+        }
+
         public async Task<RocketIdentityPayload> Register(string username, string email, string pass, string name)
         {
             var request = new HttpRequestMessage
@@ -49,13 +65,7 @@ namespace HamgoonAPIV1.Services.RocketChat
                 RequestUri = new Uri("http://193.176.241.61:3000/api/v1/users.register")
             };
             var client = _clientFactory.CreateClient();
-            var json = JsonConvert.SerializeObject(new
-            {
-                username = username,
-                pass = pass,
-                email = email,
-                name = name
-            });
+            var json = JsonConvert.SerializeObject(new RocketChatRegisterPayload(username, pass, email, name));
             request.Content = new StringContent(json, Encoding.Default, "application/json");
             var resp = await client.SendAsync(request);
             if (!resp.IsSuccessStatusCode)

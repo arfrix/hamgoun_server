@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>HamgooonAPIV1</AssemblyName>
     <RootNamespace>HamgoonAPIV1</RootNamespace>
     <Company>HamgooonWebServerV1</Company>
     <Product>HamgooonWebServerV1</Product>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
