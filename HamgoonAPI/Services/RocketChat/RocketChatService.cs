@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -17,22 +18,22 @@ namespace HamgoonAPIV1.Services.RocketChat
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri("http://0.0.0.0:3000/api/v1/login")
+                RequestUri = new Uri("http://193.176.241.61:3000/api/v1/login")
             };
-        
-            request.Content = new StringContent(JsonConvert.SerializeObject(new
+            var pairs = new List<KeyValuePair<string, string>>
             {
-                user = username,
-                pass = password
-            }));
+                KeyValuePair.Create<string, string>("user", username),
+                KeyValuePair.Create<string, string>("password", password)
+            }; 
+            request.Content = new FormUrlEncodedContent(pairs);
             var client = _clientFactory.CreateClient();
             var resp = await client.SendAsync(request);
             if (!resp.IsSuccessStatusCode)
             {
-                throw new RocketChatLoginFailed(resp.StatusCode.ToString());
+                throw new RocketChatLoginFailed(resp.ReasonPhrase);
             }
 
-            var rocketLoginResponse = RocketLoginResponse.FromJson(resp.Content.ToString());
+            var rocketLoginResponse = RocketLoginResponse.FromJson(await resp.Content.ReadAsStringAsync());
             return new RocketIdentityPayload
             {
                 AuthToken = rocketLoginResponse.Data.AuthToken
@@ -44,18 +45,19 @@ namespace HamgoonAPIV1.Services.RocketChat
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri("http://0.0.0.0:3000/api/v1/users.register")
+                RequestUri = new Uri("http://193.176.241.61:3000/api/v1/users.register")
             };
             var client = _clientFactory.CreateClient();
-            request.Content = new StringContent(JsonConvert.SerializeObject(new
+            var pairs = new List<KeyValuePair<string, string>>
             {
-                username = username,
-                email = email,
-                pass = pass, 
-                name = name,
-            }));
+                KeyValuePair.Create<string, string>("user", username),
+                KeyValuePair.Create<string, string>("password", pass),
+                KeyValuePair.Create<string, string>("email", email),
+                KeyValuePair.Create<string, string>("name", name),
+            };
+            request.Content = new FormUrlEncodedContent(pairs);
             var resp = await client.SendAsync(request);
-            var rocketRegisterResponse =  RocketRegisterResponse.FromJson(resp.Content.ToString());
+            var rocketRegisterResponse =  RocketRegisterResponse.FromJson(await resp.Content.ReadAsStringAsync());
             if (!resp.IsSuccessStatusCode)
             {
                 throw new RocketChatLoginFailed(resp.StatusCode.ToString());

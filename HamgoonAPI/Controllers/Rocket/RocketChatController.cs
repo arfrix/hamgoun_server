@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using HamgoonAPI.Request;
 using HamgoonAPIV1.Services.RocketChat;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,20 +11,39 @@ namespace HamgoonAPI.Controllers.Rocket
     public class RocketChatController
     {
         private IRocketChatService _rocketChatService;
+
         public RocketChatController(IRocketChatService service)
         {
             _rocketChatService = service;
         }
+
         [HttpPost("login")]
-        public async Task<RocketIdentityPayload> Login([FromBody] string username, string password)
+        public async Task<object> Login([FromBody] RocketLoginRequest request)
         {
-            return await _rocketChatService.Login(username, password);
+            try
+            {
+                return await _rocketChatService.Login(request.Username, request.Password);
+            }
+            catch (Exception e)
+            {
+
+                return e.Message;
+            }
         }
+
         [HttpPost("register")]
-        public async Task<RocketIdentityPayload> Register([FromBody] string username, string email, string name,
-            string pass)
+        public async Task<object> Register([FromBody] RocketChatRegisterRequest request)
         {
-            return await _rocketChatService.Register(username, email, pass, name);
+            try
+            {
+                return await _rocketChatService.Register(request.Username, request.Email, request.Password,
+                    request.Name);
+            }
+            catch (Exception e)
+            {
+
+                return e.Message;
+            }
         }
     }
 }

@@ -48,6 +48,7 @@ namespace HamgoonAPI
             services.AddMvc(
                 option=> option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddHttpClient();
             var key = Encoding.ASCII.GetBytes("HANSZIMMER-TINAGAO");
             services.AddAuthentication(x =>
             {
