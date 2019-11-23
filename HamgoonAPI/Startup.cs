@@ -13,6 +13,7 @@ using System.Text;
 using HamgoonAPI.Data;
 using HamgoonAPI.Services;
 using HamgoonAPI.Services.Users;
+using HamgoonAPIV1.Services.RocketChat;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -42,6 +43,7 @@ namespace HamgoonAPI
             services.AddTransient<IUserRegisterService, UserRegisterService>();
             services.AddTransient<IUserLoginService, UserLoginService>();
             services.AddTransient<IPasswordHasher<Models.User>, HashService>();
+            services.AddTransient<IRocketChatService, RocketChatService>();
             ////
             services.AddMvc(
                 option=> option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
