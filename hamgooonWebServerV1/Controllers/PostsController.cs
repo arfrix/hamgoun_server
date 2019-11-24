@@ -44,9 +44,9 @@ namespace hamgooonWebServerV1.Controllers
         [HttpGet("getPostByUrl/{url}")]
         public async Task<ActionResult<IEnumerable<Post>>> getPostByUrl(string  url)
         {
-            var result = _context.Post.Where(post => post.UniqueUrl == url).FirstOrDefault();
-            
-            
+            //var result = _context.Post.Where(post => post.UniqueUrl == url).FirstOrDefault();
+            var result = _context.Post.Where(post => post.UniqueUrl.Equals(url , StringComparison.Ordinal)).FirstOrDefault();
+
             return Ok(result);
         }
 
