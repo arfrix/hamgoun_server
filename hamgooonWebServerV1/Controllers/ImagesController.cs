@@ -92,8 +92,9 @@ namespace hamgooonWebServerV1.Controllers
 
 
             //< Copy File to Target >
-            ISupportedImageFormat jepgformat = new JpegFormat { Quality = 50 };
+            ISupportedImageFormat jepgformat = new JpegFormat();
             ISupportedImageFormat weformat = new WebPFormat { Quality = 30 };
+            /*
 
             using (FileStream webPFileStream = new FileStream(webPImagePath, FileMode.Create))
             {
@@ -108,6 +109,8 @@ namespace hamgooonWebServerV1.Controllers
                     
                 }
             }
+            */
+
             using (FileStream jpgFileStream = new FileStream(jpgImagePath, FileMode.Create))
             {
                 using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false, fixGamma: false))
@@ -130,7 +133,7 @@ namespace hamgooonWebServerV1.Controllers
 
 
 
-            return Ok(webPFileName);
+            return Ok(jpgFileName);
 
 
         }
