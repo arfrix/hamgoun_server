@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HamgoonAPI.Models;
 
-namespace HamgoonAPI.Data
+namespace HamgoonAPI.DataContext
 {
     
         public class HamgooonMySQLContext : DbContext

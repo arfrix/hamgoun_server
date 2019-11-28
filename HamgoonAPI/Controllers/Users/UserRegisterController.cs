@@ -1,12 +1,7 @@
-using System;
-using System.Linq;
 using System.Threading.Tasks;
-using HamgoonAPI.Models;
 using HamgoonAPI.Services.Users;
-using HamgoonAPI.Data;
-using HamgoonAPI.Exceptions.Users;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using HamgoonAPIV1.Services.RocketChat;
 
 namespace HamgoonAPI.Controllers.Users
 {
@@ -14,15 +9,22 @@ namespace HamgoonAPI.Controllers.Users
     public class UserRegisterController : ControllerBase
     {
         private readonly IUserRegisterService _service;
-        public UserRegisterController(IUserRegisterService service)
+        private readonly IRocketChatService _rocketChatService;
+
+        public UserRegisterController(IUserRegisterService service, IRocketChatService rocketChat)
         {
             _service = service;
+            _rocketChatService = rocketChat;
         }
         [HttpPost]
-        public async Task<User> Register([FromBody]User user)
+        public async Task<object> Register([FromBody]Models.User user)
         {
             var newuser = await _service.Register(user);
-            return newuser;
+            var rocketToken = (await _rocketChatService.Register(user.UserName, user.Email, user.Pass, user.UserName)).AuthToken;
+            return new {
+                user = newuser,
+                rocketToken
+            };
         }
     }
 }

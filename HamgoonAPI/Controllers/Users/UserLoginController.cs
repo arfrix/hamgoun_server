@@ -2,8 +2,9 @@
 using System.Threading.Tasks;
 using HamgoonAPI.Models.Requests;
 using HamgoonAPI.Services.Users;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using Microsoft.AspNetCore.Mvc;
+using HamgoonAPIV1.Services.RocketChat;
 
 namespace HamgoonAPI.Controllers.Users
 {
@@ -12,9 +13,11 @@ namespace HamgoonAPI.Controllers.Users
     public class UserLoginController : ControllerBase
     {
         private readonly IUserLoginService _service;
-        public UserLoginController(IUserLoginService service)
+        private readonly IRocketChatService _rocketChatService;
+        public UserLoginController(IUserLoginService service, IRocketChatService rocketChat)
         {
             _service = service;
+            _rocketChatService = rocketChat;
         }
 
         [HttpPost]
@@ -23,7 +26,8 @@ namespace HamgoonAPI.Controllers.Users
             try
             {
                 return new {
-                    Token = await _service.LoginAsync(request.UserName, request.Password)
+                    Token = await _service.LoginAsync(request.UserName, request.Password),
+                    RocketToken = (await _rocketChatService.Login(request.UserName, request.Password)).AuthToken
                 };
             }
             catch (Exception ex)

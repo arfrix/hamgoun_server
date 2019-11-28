@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPI.Exceptions.Users;
 using HamgoonAPI.Models;
 using HamgoonAPI.Models.Requests;

@@ -1,5 +1,5 @@
 using System.Text;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPI.Services;
 using HamgoonAPI.Services.Users;
 using HamgoonAPIV1.Services.RocketChat;
@@ -30,6 +30,7 @@ namespace HamgoonAPIV1.Services
             services.AddHttpClient();
             return services;
         }
+
         private static IServiceCollection ConfigureDatabase(this IServiceCollection services, IConfiguration Configuration)
         {
             return services.AddDbContext<HamgooonMySQLContext>(

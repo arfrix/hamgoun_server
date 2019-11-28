@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPI.Models;
 using HamgoonAPI.Request;
 using Microsoft.AspNetCore.Authorization;
@@ -65,7 +65,7 @@ namespace HamgoonAPI.Controllers
 
             System.Linq.IQueryable<User> result = null;
 
-            if(req.Bio == -1)
+            if (req.Bio == -1)
             {
                 result = _context.User.Where(user => user.UserName.Contains(req.KeyWord));
             }
@@ -85,20 +85,20 @@ namespace HamgoonAPI.Controllers
                     case 3:
                         result = _context.User.Where(user => user.Location_motherTown.Contains(req.KeyWord) || user.Location_livingCountry.Contains(req.KeyWord) || user.Location_livingTown.Contains(req.KeyWord));
                         break;
-                }   
+                }
             }
 
-            
+
 
 
             if (result.Count() == 0)
                 return Ok(Models.Response.NewResponse(false, "not found"));
             else
-                return Ok(Models.Response.NewResponse(true,"found somthing",result));
+                return Ok(Models.Response.NewResponse(true, "found somthing", result));
         }
 
-       [HttpPost("sendEmail")]
-       public async Task<ActionResult<User>> sendEmail(ReqForEmail req)
+        [HttpPost("sendEmail")]
+        public async Task<ActionResult<User>> sendEmail(ReqForEmail req)
         {
 
 
@@ -124,11 +124,12 @@ namespace HamgoonAPI.Controllers
 
                     client.Send(msg);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest();
             }
-            
+
             return Ok(true);
         }
 

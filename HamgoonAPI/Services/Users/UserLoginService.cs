@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPI.Exceptions.Users;
 using HamgoonAPI.Models;
 using Microsoft.AspNetCore.Identity;

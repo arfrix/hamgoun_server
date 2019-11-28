@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Infrastructure;

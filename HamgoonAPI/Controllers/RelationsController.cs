@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,22 +42,22 @@ namespace HamgoonAPI.Controllers
             return relation;
         }
 
-        
+
         [HttpGet("whoFollowMe/{id}")]
         public async Task<ActionResult<Relation>> whoFollowMe(long id)
         {
             List<User> followers = new List<User>();
-           
-            var followersId =  _context.Relation.Where(rel => rel.FollowedId == id).Select(rel => rel.FollowerId);
-            foreach(long followerId  in followersId)
+
+            var followersId = _context.Relation.Where(rel => rel.FollowedId == id).Select(rel => rel.FollowerId);
+            foreach (long followerId in followersId)
             {
-                
+
                 IEnumerable<User> toAdd = _context.User.Where(user => user.Id == followerId);
-               
+
                 followers.AddRange(toAdd);
-                
+
             }
-            
+
             return Ok(followers);
         }
 
@@ -67,20 +67,20 @@ namespace HamgoonAPI.Controllers
         public async Task<ActionResult<Relation>> PostRelation(Relation relation)
         {
             var foundSameRelation = _context.Relation.Where(rel => rel.FollowedId == relation.FollowedId && rel.FollowerId == relation.FollowerId && rel.MainCategory == relation.MainCategory).FirstOrDefault();
-            
-            if(foundSameRelation == null)
+
+            if (foundSameRelation == null)
             {
                 _context.Relation.Add(relation);
                 await _context.SaveChangesAsync();
-                return Ok(Response(true,"پیگیرش شدی"));
+                return Ok(Response(true, "پیگیرش شدی"));
             }
             else
             {
                 return Ok(Response(false, "قبلا پیگیرش شدی"));
             }
-           
 
-            
+
+
         }
         // POST: api/Relations
         [HttpPost("/delete")]
@@ -91,7 +91,7 @@ namespace HamgoonAPI.Controllers
                                                                     && rel.MainCategory == relation.MainCategory
                                                                     && rel.SubCategory == relation.SubCategory);
 
-            if(relationtoDelete.Count() != 0)
+            if (relationtoDelete.Count() != 0)
             {
                 _context.Relation.RemoveRange(relationtoDelete);
                 await _context.SaveChangesAsync();
@@ -112,7 +112,7 @@ namespace HamgoonAPI.Controllers
             relationToFind.LastSeenPostNumber += 1;
 
 
-                await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return Ok(true);
         }

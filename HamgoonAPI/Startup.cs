@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPIV1.Services;
 
 namespace HamgoonAPI

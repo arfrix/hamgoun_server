@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HamgoonAPI.Data;
+using HamgoonAPI.DataContext;
 using HamgoonAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,10 +49,10 @@ namespace HamgoonAPI.Controllers
 
             if (notif.Count() == 0)
             {
-                return Ok(Response(false,"چیزی موجود نبود"));
+                return Ok(Response(false, "چیزی موجود نبود"));
             }
 
-            return Ok(Response(true,"",notif));
+            return Ok(Response(true, "", notif));
         }
 
 
@@ -64,7 +64,7 @@ namespace HamgoonAPI.Controllers
         {
             Event emty;
             var relatedEvent = _context.Event.Where(ratingEventToFind => ratingEventToFind.CommentId == ratingEvent.CommentId && ratingEventToFind.ActorId == ratingEvent.ActorId).FirstOrDefault();
-            if(relatedEvent!= null)
+            if (relatedEvent != null)
             {
                 if (relatedEvent.IsNamizoun)
                 {
@@ -82,7 +82,7 @@ namespace HamgoonAPI.Controllers
                 ratingEvent.IsNamizoun = false;
                 _context.Event.Add(ratingEvent);
 
-               
+
             }
 
 
@@ -92,8 +92,8 @@ namespace HamgoonAPI.Controllers
 
 
 
-            
-            return Ok(Response(true ,""));
+
+            return Ok(Response(true, ""));
         }
 
 
@@ -146,10 +146,10 @@ namespace HamgoonAPI.Controllers
 
             var post = await _context.Post.FindAsync(ratingEvent.PostId);
 
-            if(post!= null)
+            if (post != null)
             {
                 var relatedEvent = _context.Event.Where(ratingEventToFind => ratingEventToFind.PostId == ratingEvent.PostId && ratingEventToFind.ActorId == ratingEvent.ActorId).FirstOrDefault();
-                if(relatedEvent == null)
+                if (relatedEvent == null)
                 {
                     _context.Event.Add(ratingEvent);
                     post.PostRate = ((post.JudgesCount * post.PostRate) + ratingEvent.PostRate) / (post.JudgesCount + 1);
@@ -161,17 +161,18 @@ namespace HamgoonAPI.Controllers
                     return Ok(Response(false, "شما قبلا رای دادین !"));
                 }
             }
-            else{
+            else
+            {
                 return Ok(Response(false, "اصن چنین پستی وجود نداره که بخوای رای بدی بهش!"));
             }
 
 
-            
-             
-            
+
+
+
             await _context.SaveChangesAsync();
 
-            return Ok(Response(true, "",post.PostRate));
+            return Ok(Response(true, "", post.PostRate));
         }
 
 
