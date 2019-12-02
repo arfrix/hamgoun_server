@@ -10,12 +10,10 @@ namespace HamgoonAPI.Services
 
         public PasswordVerificationResult VerifyHashedPassword
             (User _, string hashedPassword, string providedPassword)
-        {
-            return BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword) 
+        => BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword) 
                 ? PasswordVerificationResult.Success
                 : PasswordVerificationResult.Failed;
                 
-            
-        }
+        
     }
 }
