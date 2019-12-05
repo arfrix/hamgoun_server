@@ -1,4 +1,4 @@
-namespace HamgoonAPI.Models
+namespace HamgoonAPI.Services.Users
 {
     public class UserLoginResponse
     {

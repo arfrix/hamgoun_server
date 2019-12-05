@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HamgoonAPI.Models.Requests;
 using HamgoonAPI.Services.Users;
 using HamgoonAPI.DataContext;
+using HamgoonAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
 using HamgoonAPIV1.Services.RocketChat;
 

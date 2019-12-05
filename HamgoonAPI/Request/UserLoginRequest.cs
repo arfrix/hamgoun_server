@@ -1,5 +1,5 @@
 ﻿using System;
-namespace HamgoonAPI.Models.Requests
+namespace HamgoonAPI.Requests
 {
     public class UserLoginRequest
     {

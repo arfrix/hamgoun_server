@@ -36,7 +36,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="Controllers\Users\" />
-    <Folder Include="Models\Requests\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Users\" />
     <Folder Include="Exceptions\" />

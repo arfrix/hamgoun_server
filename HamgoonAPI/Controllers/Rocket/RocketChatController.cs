@@ -10,7 +10,7 @@ namespace HamgoonAPI.Controllers.Rocket
 {
     [ApiController]
     [Route("[controller]")]
-    public class RocketChatController
+    public class RocketChatController: ControllerBase
     {
         private IRocketChatService _rocketChatService;
 
