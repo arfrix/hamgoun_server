@@ -23,11 +23,11 @@ namespace HamgoonAPI.Services.Users
         }
         public async Task<User> Register(User request)
         {
-            var exists = await _context.User
+            var count = await _context.User
                 .Where(u => request.Email == u.Email || u.UserName == request.UserName || u.PhoneNumber == request.PhoneNumber)
-                .FirstOrDefaultAsync();
+                .CountAsync();
 
-            if (exists != null)
+            if (count !=0)
             {
                 throw new UserAlreadyExists();
             }
