@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HamgoonAPI.Models
 {
@@ -13,7 +14,7 @@ namespace HamgoonAPI.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Email { get; set; }
-        public long PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string ProfileImgUrl { get; set; }
         public long Hamegyry { get; set; }
         public long Hamrahy { get; set; }
@@ -59,12 +60,6 @@ namespace HamgoonAPI.Models
         public string Skill_secondSkillName { get; set; }
         public string Teach_mainTeachName { get; set; }
         public string Teach_secondTeachName { get; set; }
-
-
-        public User ShallowCopy()
-        {
-            return (User)this.MemberwiseClone();
-        }
 
     }
 }

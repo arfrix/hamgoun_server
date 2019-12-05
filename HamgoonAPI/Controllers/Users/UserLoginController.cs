@@ -18,7 +18,7 @@ namespace HamgoonAPI.Controllers.Users
             => (_service, _rocketChatService) = (service, rocketChat);
 
         [HttpPost]
-        public async Task<object> Login([FromBody]UserLoginRequest request)
+        public async Task<object> Login([FromBody] UserLoginRequest request)
         {
             try
             {

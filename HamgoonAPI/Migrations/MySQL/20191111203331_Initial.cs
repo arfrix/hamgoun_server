@@ -130,7 +130,7 @@ namespace HamgoonAPI.Migrations.MySQL
                     Firstname = table.Column<string>(nullable: true),
                     Lastname = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<long>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
                     ProfileImgUrl = table.Column<string>(nullable: true),
                     Hamegyry = table.Column<long>(nullable: false),
                     Hamrahy = table.Column<long>(nullable: false),

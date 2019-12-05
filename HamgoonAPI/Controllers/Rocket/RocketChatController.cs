@@ -1,7 +1,9 @@
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using HamgoonAPI.Request;
 using HamgoonAPIV1.Services.RocketChat;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HamgoonAPI.Controllers.Rocket

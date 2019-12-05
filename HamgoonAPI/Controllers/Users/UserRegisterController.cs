@@ -6,6 +6,7 @@ using HamgoonAPIV1.Services.RocketChat;
 
 namespace HamgoonAPI.Controllers.Users
 {
+    [ApiController]
     [Route("register")]
     public class UserRegisterController : ControllerBase
     {

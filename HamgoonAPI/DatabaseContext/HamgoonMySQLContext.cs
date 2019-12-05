@@ -14,7 +14,6 @@ namespace HamgoonAPI.DataContext
             : base(options)
         {
         }
-
             public DbSet<User> User { get; set; }
             public DbSet<Post> Post { get; set; }
             public DbSet<Relation> Relation { get; set; }

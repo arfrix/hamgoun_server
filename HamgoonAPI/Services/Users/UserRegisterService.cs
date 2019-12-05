@@ -23,19 +23,19 @@ namespace HamgoonAPI.Services.Users
         }
         public async Task<User> Register(User request)
         {
-            var exists = await _context.User.
-                Where(u => request.Email == u.Email || u.UserName == request.UserName)
+            var exists = await _context.User
+                .Where(u => request.Email == u.Email || u.UserName == request.UserName)
                 .FirstOrDefaultAsync();
 
             if (exists != null)
             {
                 throw new UserAlreadyExists();
             }
-            
             request.Pass = _hasher.HashPassword(request, request.Pass);
             _context.User.Add(request);
             await _context.SaveChangesAsync();
             return request;
+
         }
     }
 }
