@@ -23,7 +23,7 @@ namespace HamgoonAPI.Services.Users
             _hasher = hasher;
             _context = context;
         }
-        public async Task<string> LoginAsync(string username, string password)
+        public async Task<UserLoginResponse> LoginAsync(string username, string password)
         {
             var user = await _context.User.Where(u => u.UserName == username).FirstOrDefaultAsync();
             if (user == null)
@@ -47,7 +47,11 @@ namespace HamgoonAPI.Services.Users
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            return new UserLoginResponse
+            {
+                BearerToken = tokenHandler.WriteToken(token),
+                UserId = user.Id
+            };
         }
     }
 }
