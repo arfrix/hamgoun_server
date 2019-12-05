@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using HamgoonAPI.DataContext;
 using HamgoonAPI.Exceptions.Users;
 using HamgoonAPI.Models;
-using HamgoonAPI.Models.Requests;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

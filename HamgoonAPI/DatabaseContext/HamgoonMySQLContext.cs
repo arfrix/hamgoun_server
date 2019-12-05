@@ -20,6 +20,7 @@ namespace HamgoonAPI.DataContext
             public DbSet<Image> Image { get; set; }
             public DbSet<Comment> Comment { get; set; }
             public DbSet<Event> Event { get; set; }
+            public DbSet<UserRocket> UsersRocket { get; set; }
 
         }
     }

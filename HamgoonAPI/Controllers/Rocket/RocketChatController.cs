@@ -24,7 +24,7 @@ namespace HamgoonAPI.Controllers.Rocket
         {
             try
             {
-                return await _rocketChatService.Login(request.Username, request.Password);
+                return await _rocketChatService.Login(Convert.ToInt64(HttpContext.User.Identity.Name));
             }
             catch (Exception e)
             {
@@ -37,8 +37,7 @@ namespace HamgoonAPI.Controllers.Rocket
         {
             try
             {
-                return await _rocketChatService.Register(request.Username, request.Email, request.Password,
-                    request.Name);
+                return await _rocketChatService.Register(Convert.ToInt64(HttpContext.User.Identity.Name));
             }
             catch (Exception e)
             {
