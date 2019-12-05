@@ -24,7 +24,7 @@ namespace HamgoonAPI.Services.Users
         public async Task<User> Register(User request)
         {
             var exists = await _context.User
-                .Where(u => request.Email == u.Email || u.UserName == request.UserName)
+                .Where(u => request.Email == u.Email || u.UserName == request.UserName || u.PhoneNumber == request.PhoneNumber)
                 .FirstOrDefaultAsync();
 
             if (exists != null)

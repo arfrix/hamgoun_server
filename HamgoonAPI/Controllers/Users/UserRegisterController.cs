@@ -24,11 +24,9 @@ namespace HamgoonAPI.Controllers.Users
             try
             {
                 var newuser = await _service.Register(user);
-//                var rocketToken = (await _rocketChatService.Register(user.UserName, user.Email, user.Pass, user.UserName)).AuthToken;
                 return new
                 {
                     user = newuser,
-//                    rocketToken
                 };
             }
             catch (Exception ex)
