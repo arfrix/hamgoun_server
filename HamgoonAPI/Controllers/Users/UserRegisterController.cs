@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using HamgoonAPI.Services.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -19,12 +20,25 @@ namespace HamgoonAPI.Controllers.Users
         [HttpPost]
         public async Task<object> Register([FromBody]Models.User user)
         {
-            var newuser = await _service.Register(user);
-            var rocketToken = (await _rocketChatService.Register(user.UserName, user.Email, user.Pass, user.UserName)).AuthToken;
-            return new {
-                user = newuser,
-                rocketToken
-            };
+            try
+            {
+                var newuser = await _service.Register(user);
+//                var rocketToken = (await _rocketChatService.Register(user.UserName, user.Email, user.Pass, user.UserName)).AuthToken;
+                return new
+                {
+                    user = newuser,
+//                    rocketToken
+                };
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    Status = false,
+                    Message = ex.Message
+                };
+            }
+
         }
     }
 }

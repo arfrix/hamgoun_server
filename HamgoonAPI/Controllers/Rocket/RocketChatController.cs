@@ -26,7 +26,6 @@ namespace HamgoonAPI.Controllers.Rocket
             }
             catch (Exception e)
             {
-
                 return e.Message;
             }
         }
