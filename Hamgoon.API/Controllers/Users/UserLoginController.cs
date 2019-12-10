@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using HamgoonAPI.Requests;
 using HamgoonAPI.Services.Users;
-using HamgoonAPIV1.Services.RocketChat;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hamgoon.API.Controllers.Users
@@ -12,9 +11,8 @@ namespace Hamgoon.API.Controllers.Users
     public class UserLoginController : ControllerBase
     {
         private readonly IUserLoginService _service;
-        private readonly IRocketChatService _rocketChatService;
-        public UserLoginController(IUserLoginService service, IRocketChatService rocketChat)
-            => (_service, _rocketChatService) = (service, rocketChat);
+        public UserLoginController(IUserLoginService service)
+            => (_service) = (service);
 
         [HttpPost]
         public async Task<object> Login([FromBody] UserLoginRequest request)

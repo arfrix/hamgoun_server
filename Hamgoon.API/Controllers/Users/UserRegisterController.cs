@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using HamgoonAPI.Services.Users;
-using HamgoonAPIV1.Services.RocketChat;
 using Microsoft.AspNetCore.Mvc;
 using User = Hamgoon.API.Models.User;
 
@@ -12,22 +11,17 @@ namespace Hamgoon.API.Controllers.Users
     public class UserRegisterController : ControllerBase
     {
         private readonly IUserRegisterService _service;
-        private readonly IRocketChatService _rocketChatService;
 
-        public UserRegisterController(IUserRegisterService service, IRocketChatService rocketChat)
-        {
-            _service = service;
-            _rocketChatService = rocketChat;
-        }
+        public UserRegisterController(IUserRegisterService service) => _service = service;
         [HttpPost]
         public async Task<object> Register([FromBody]User user)
         {
             try
             {
-                var newuser = await _service.Register(user);
+                var newUser = await _service.Register(user);
                 return new
                 {
-                    user = newuser,
+                    user = newUser,
                 };
             }
             catch (Exception ex)
@@ -35,7 +29,7 @@ namespace Hamgoon.API.Controllers.Users
                 return new
                 {
                     Status = false,
-                    Message = ex.Message
+                    ex.Message
                 };
             }
 

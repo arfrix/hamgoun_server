@@ -2,7 +2,6 @@ using System.Text;
 using HamgoonAPI.DataContext;
 using HamgoonAPI.Services;
 using HamgoonAPI.Services.Users;
-using HamgoonAPIV1.Services.RocketChat;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +26,6 @@ namespace HamgoonAPIV1.Services
             services.AddTransient<IUserRegisterService, UserRegisterService>();
             services.AddTransient<IUserLoginService, UserLoginService>();
             services.AddTransient<IPasswordHasher<User>, HashService>();
-            services.AddTransient<IRocketChatService, RocketChatService>();
             services.AddHttpClient();
             return services;
         }
