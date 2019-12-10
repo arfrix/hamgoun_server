@@ -242,6 +242,24 @@ namespace Hamgoon.API.Controllers
 
             return Ok(result);
         }
+        [HttpGet("mostCommentedPosts/{mainCat}")]
+        public async Task<ActionResult<Post>> mostCommentedPosts(int mainCat)
+        {
+            //var result = '';
+            if (mainCat == -1)
+            {
+                result = _context.Post.Where(post => post.IsDrafted == false).OrderByDescending(post => post.CommentCount).Take(10);
+            }
+            else
+            {
+                result = _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat).OrderBy(post => post.CommentCount).Take(10);
+            }
+
+
+
+
+            return Ok(result);
+        }
 
         [Authorize]
         [HttpPost("hamegyry")]
