@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3c13bf10-2da6-47cd-8109-969399b9f2a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Hamgoon.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/CommentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/EventsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/EventsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/HealthCheckController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/HealthCheckController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/ImagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/ImagesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/PostsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/RelationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/RelationsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/Rocket/RocketChatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/Rocket/RocketChatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/Users/UserLoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UserLoginController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/Users/UserRegisterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UserRegisterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Controllers/Users/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/DatabaseContext/HamgoonMySQLContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/DatabaseContext/HamgoonMySQLContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Exceptions/Users/UserAlreadyExists.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Exceptions/Users/UserAlreadyExists.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Exceptions/Users/UserLoginFaild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Exceptions/Users/UserLoginFaild.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Exceptions/Users/UserNotFound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Exceptions/Users/UserNotFound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/HamgoonAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Hamgoon.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/HamgoonAPI/Migrations/MySQL/HamgooonMySQLContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/HamgooonMySQLContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Migrations/MySQL/20191111203331_Initial.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/20191111203331_Initial.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Migrations/MySQL/20191111203331_Initial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/20191111203331_Initial.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Migrations/MySQL/20191205190500_AddUserRocketTable.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/20191205190500_AddUserRocketTable.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Migrations/MySQL/20191205190500_AddUserRocketTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/20191205190500_AddUserRocketTable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Event.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Image.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Post.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Relation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Relation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForDraftList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForDraftList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForEmail.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForEmail.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForFollowedNewPosts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForFollowedNewPosts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForHamegyry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForHamegyry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForLogin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForLogin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForMyPostList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForMyPostList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForNotSeenPostList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForNotSeenPostList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForPostComment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForPostComment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForPostTemplates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForPostTemplates.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForPublishPost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForPublishPost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/ReqForSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/RocketChatRegisterRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/RocketChatRegisterRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/RocketLoginRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/RocketLoginRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Request/UserLoginRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Request/UserLoginRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/Response.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/Response.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Models/UserRocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Models/UserRocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Base62Converter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Base62Converter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/HashService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/HashService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Exceptions/RocketChatLoginFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Exceptions/RocketChatLoginFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Exceptions/RocketChatRegisterFailed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Exceptions/RocketChatRegisterFailed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/IRocketChatService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/IRocketChatService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Models/RocketChatRegisterError.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Models/RocketChatRegisterError.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Models/RocketIdentityPayload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Models/RocketIdentityPayload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Models/RocketLoginResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Models/RocketLoginResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Models/RocketRegisterPayload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Models/RocketRegisterPayload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/Models/RocketRegisterResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Models/RocketRegisterResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/RocketChatService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/RocketChatService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Users/IUserLoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Users/IUserLoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Users/IUserRegisterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Users/IUserRegisterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Users/UserLoginResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Users/UserLoginResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Users/UserLoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Users/UserLoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Services/Users/UserRegisterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Services/Users/UserRegisterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/appsettings.production.json" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/appsettings.production.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/wwwroot/images/download.webp" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/wwwroot/images/download.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonAPI/wwwroot/images/rugby.webp" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.API/wwwroot/images/rugby.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonTests/HamgoonTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.Tests/Hamgoon.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HamgoonTests/Services/HashServiceTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hamgoon.Tests/Services/HashServiceTest.cs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Request/RocketLoginRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UserRegisterController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UsersController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/Models/RocketRegisterPayload.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Request/ReqForDraftList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/20191205190500_AddUserRocketTable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/IRocketChatService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6936A521-FED8-4DEB-8B14-A7F0DF001041/34/26a490e6/IIdentity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Services/RocketChat/RocketChatService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/UserRocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UserLoginController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Exceptions/Users/UserAlreadyExists.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Migrations/MySQL/20191111203331_Initial.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/PostsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/CommentsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/ImagesController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/EventsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/HealthCheckController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C34D92CF-0375-4665-9D3D-BD7DD359F0E5/24/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/RelationsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.Tests/Services/HashServiceTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6BCDFAAE-EEF5-425B-99B4-BFDE66161A46/17/EntityFrameworkQueryableExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Controllers/Rocket/RocketChatController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Event.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/DatabaseContext/HamgoonMySQLContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Image.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Relation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Response.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Post.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Comment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Hamgoon.API/Models/Request/UserLoginRequest.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/HamgoonAPI/Models/User.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Migrations/MySQL/20191111203331_Initial.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Controllers/Users/UserRegisterController.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Models/UserLoginResponse.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/Users/IUserLoginService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/Users/UserLoginService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/Users/UserLoginResponse.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Request/UserLoginRequest.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Controllers/Users/UserLoginController.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Models/UserRocket.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/Users/UserRegisterService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Migrations/MySQL/20191205190403_AddUserRocketTable.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/DatabaseContext/HamgoonMySQLContext.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/IRocketChatService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/RocketChat/RocketChatService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Controllers/Rocket/RocketChatController.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Program.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Startup.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Controllers/UserLoginController.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Controllers/UserRegisterController.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Models/User.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Services/IUserLoginService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Services/IUserRegisterService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Services/UserLoginResponse.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Services/UserLoginService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Services/UserManager/Services/UserRegisterService.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/Controllers/PostsController.cs" />
+        <option value="$PROJECT_DIR$/HamgoonAPI/appsettings.json" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/Response.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Hamgoon.API.csproj" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UsersController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UserRegisterController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/Users/UserLoginController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/Rocket/RocketChatController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/CommentsController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/EventsController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/HealthCheckController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/ImagesController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/PostsController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Controllers/RelationsController.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.Tests/Services/HashServiceTest.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/Comment.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/Event.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/Image.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/Post.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/Relation.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/User.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Models/UserRocket.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Program.cs" />
+        <option value="$PROJECT_DIR$/Hamgoon.API/Startup.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UWpWBFfv42HTVhOI2N3Et0k7mU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.HamgoonAPI: HamgoonAPIV1">
+    <configuration name="HamgoonAPI: HamgoonAPIV1" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/HamgoonAPI/HamgoonAPI.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="HamgoonAPIV1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HamgoonAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/HamgoonAPI/HamgoonAPI.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c13bf10-2da6-47cd-8109-969399b9f2a7" name="Default Changelist" comment="" />
+      <created>1575482235631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575482235631</updated>
+      <workItem from="1575482239289" duration="149000" />
+      <workItem from="1575486745560" duration="1340000" />
+      <workItem from="1575543127143" duration="1453000" />
+      <workItem from="1575547897629" duration="9853000" />
+      <workItem from="1575574233587" duration="1281000" />
+      <workItem from="1575624556158" duration="1037000" />
+      <workItem from="1575742935341" duration="62000" />
+      <workItem from="1575747283443" duration="154000" />
+      <workItem from="1575826038574" duration="1207000" />
+      <workItem from="1575830517412" duration="64000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

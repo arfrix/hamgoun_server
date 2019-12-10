@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{1627528A-D4E8-4B5D-B358-F381B97C4CD7}|Default">
+  <MonoDevelop.Ide.ItemProperties.HamgoonAPI PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HamgoonTests/UnitTest1.cs">
+    <Files>
+      <File FileName="HamgoonAPI/Controllers/CommentsController.cs" Line="1" Column="1" />
+      <File FileName="HamgoonAPI/Services/Bootstrap.cs" />
+      <File FileName="HamgoonAPI/Startup.cs" />
+      <File FileName="HamgoonAPI/Controllers/EventsController.cs" />
+      <File FileName="HamgoonAPI/Controllers/ImagesController.cs" />
+      <File FileName="HamgoonAPI/Controllers/PostsController.cs" />
+      <File FileName="HamgoonAPI/Controllers/Rocket/RocketChatController.cs" />
+      <File FileName="HamgoonAPI/Controllers/Users/UserLoginController.cs" />
+      <File FileName="HamgoonAPI/Controllers/Users/UserRegisterController.cs" Line="25" Column="25" />
+      <File FileName="HamgoonTests/UnitTest1.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="hamgooonWebServerV1" expanded="True">
+            <Node name="HamgoonAPI" selected="True" />
+            <Node name="HamgoonTests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.HamgoonTests FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
