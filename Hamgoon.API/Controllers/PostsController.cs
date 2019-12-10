@@ -15,14 +15,13 @@ namespace Hamgoon.API.Controllers
     [ApiController]
     public class PostsController : ControllerBase
     {
-
         private readonly HamgooonMySQLContext _context;
-        private object result;
 
         public PostsController(HamgooonMySQLContext context)
         {
             _context = context;
         }
+
         [Authorize]
         // GET: Posts
         [HttpGet]
@@ -37,7 +36,7 @@ namespace Hamgoon.API.Controllers
         [Authorize]
         // GET: Posts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Post>> GetPost(long id) => 
+        public async Task<ActionResult<Post>> GetPost(long id) =>
             (ActionResult<Post>) await _context.Post.FindAsync(id) ?? NotFound();
 
         [Authorize]
@@ -50,10 +49,11 @@ namespace Hamgoon.API.Controllers
             {
                 return NotFound(Response(false, "not found post with that id"));
             }
+
             post.IsDrafted = false;
             var number = await (
                 from p in _context.Post
-                where p.PublisherId == post.PublisherId  &&
+                where p.PublisherId == post.PublisherId &&
                       p.MainCategory == post.MainCategory &&
                       p.SubCategory == post.SubCategory &&
                       p.IsDrafted == post.IsDrafted && p.Id == id
@@ -61,15 +61,16 @@ namespace Hamgoon.API.Controllers
             post.Number = number;
             var relation = from rel in _context.Relation
                 where rel.FollowedId == post.PublisherId &&
-                    rel.MainCategory == post.MainCategory &&
-                    rel.SubCategory == post.SubCategory 
-                    select rel;
+                      rel.MainCategory == post.MainCategory &&
+                      rel.SubCategory == post.SubCategory
+                select rel;
             foreach (var rel in relation)
             {
                 rel.TotalPostNumber = number;
             }
+
             await _context.SaveChangesAsync();
-            
+
             return Ok(Response(true, "published"));
         }
 
@@ -85,8 +86,7 @@ namespace Hamgoon.API.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPost", new { id = post.Id }, post);
-
+            return CreatedAtAction("GetPost", new {id = post.Id}, post);
         }
 
         [Authorize]
@@ -94,7 +94,6 @@ namespace Hamgoon.API.Controllers
         [HttpPost("Update")]
         public async Task<ActionResult<Post>> UpdatePost(Post post)
         {
-
             Post postShouldToUpdate = await _context.Post.FindAsync(post.Id);
             if (postShouldToUpdate == null)
                 return Ok(Response(false, "there is not such post with this id"));
@@ -103,6 +102,7 @@ namespace Hamgoon.API.Controllers
                 _context.Entry(postShouldToUpdate).CurrentValues.SetValues(post);
                 // post.PostSummary = post.Body.Substring(0, (post.Body.Length <= 70 ? post.Body.Length : 70));
             }
+
             await _context.SaveChangesAsync();
 
             return Ok(postShouldToUpdate);
@@ -117,8 +117,9 @@ namespace Hamgoon.API.Controllers
             List<Post> postlist = new List<Post>();
 
             var relations = _context.Relation.Where(relation => relation.FollowerId == req.FollowerId
-                                                        && relation.MainCategory == req.MainCategory
-                                                        && relation.SubCategory == req.SubCategory).OrderByDescending(rel => rel.EngagementRate);
+                                                                && relation.MainCategory == req.MainCategory
+                                                                && relation.SubCategory == req.SubCategory)
+                .OrderByDescending(rel => rel.EngagementRate);
             foreach (Relation rel in relations)
             {
                 var tempGap = rel.TotalPostNumber - rel.LastSeenPostNumber;
@@ -133,38 +134,39 @@ namespace Hamgoon.API.Controllers
                     {
                         rel.LastSeenPostNumber += 1;
                         IEnumerable<Post> toAdd = _context.Post.Where(post => post.PublisherId == rel.FollowedId
-                                                                && post.MainCategory == rel.MainCategory
-                                                                && post.SubCategory == rel.SubCategory
-                                                                && post.Number == rel.LastSeenPostNumber
-                                                                && post.IsDrafted == false);
+                                                                              && post.MainCategory == rel.MainCategory
+                                                                              && post.SubCategory == rel.SubCategory
+                                                                              && post.Number == rel.LastSeenPostNumber
+                                                                              && post.IsDrafted == false);
                         postlist.AddRange(toAdd);
-
-
                     }
                 }
 
             return Ok(postlist);
-
         }
+
         [Authorize]
         [HttpPost("followedNewPosts")]
         public async Task<ActionResult<Post>> followingNewPosts(ReqForFollowedNewPosts req)
         {
-
             List<Post> followedUserPostlist = new List<Post>();
 
             var relations = _context.Relation.Where(relation => relation.FollowerId == req.FollowerId
-                                                        && relation.MainCategory == req.MainCategory
-                                                        && relation.SubCategory == req.SubCategory).OrderByDescending(rel => rel.EngagementRate);
+                                                                && relation.MainCategory == req.MainCategory
+                                                                && relation.SubCategory == req.SubCategory)
+                .OrderByDescending(rel => rel.EngagementRate);
             foreach (Relation rel in relations)
             {
-                List<Post> postlist = _context.Post.Where(postsToFind => postsToFind.PublisherId == rel.FollowedId && postsToFind.IsDrafted == false && postsToFind.MainCategory == rel.MainCategory).OrderByDescending(pos => pos.Number).ToList();
+                List<Post> postlist = _context.Post
+                    .Where(postsToFind => postsToFind.PublisherId == rel.FollowedId && postsToFind.IsDrafted == false &&
+                                          postsToFind.MainCategory == rel.MainCategory)
+                    .OrderByDescending(pos => pos.Number).ToList();
 
                 // alan post haye kasayi ke follow shon kardera ro poshet sar ham rihkte yany 10 ta post hassan bad 7 ta post mamad
                 foreach (Post post in postlist)
                     followedUserPostlist.Add(post);
-
             }
+
             // hala miad posta ro bar hasb id moratab mikone tory ke  id bozorgtara aval bashan va intory engary darym be tartib jadid boodan moratab mikonim
             followedUserPostlist = followedUserPostlist.OrderByDescending(pos => pos.Id).ToList();
 
@@ -180,8 +182,10 @@ namespace Hamgoon.API.Controllers
         [HttpPost("myPostsList")]
         public async Task<ActionResult<Post>> myPostsList(ReqForMyPostList req)
         {
-
-            var postList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.IsDrafted == false).OrderBy(pos => pos.Number);
+            var postList = _context.Post
+                .Where(pos =>
+                    pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory &&
+                    pos.IsDrafted == false).OrderBy(pos => pos.Number);
             if (postList.Count() == 0)
                 return Ok(Response(false, "there is no post"));
             else
@@ -193,8 +197,8 @@ namespace Hamgoon.API.Controllers
         [HttpPost("draftList")]
         public async Task<ActionResult<Post>> DraftList(ReqForDraftList req)
         {
-
-            var draftedList = _context.Post.Where(pos => pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.IsDrafted == true);
+            var draftedList = _context.Post.Where(pos =>
+                pos.PublisherId == req.PublisherId && pos.MainCategory == req.MainCategory && pos.IsDrafted == true);
             if (draftedList.Count() == 0)
                 return Ok(Response(false, "there is no drafted post"));
             else
@@ -209,13 +213,19 @@ namespace Hamgoon.API.Controllers
 
             if (req.MainCat == -1)
             {
-                result = _context.Post.Where(pos => pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) || pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) || pos.FourthTag.Contains(req.KeyWord)).Where(posts => posts.IsDrafted == false);
+                result = _context.Post
+                    .Where(pos =>
+                        pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) ||
+                        pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) ||
+                        pos.FourthTag.Contains(req.KeyWord)).Where(posts => posts.IsDrafted == false);
             }
             else
             {
-                result = _context.Post.Where(pos => pos.MainCategory == req.MainCat && pos.IsDrafted == false).Where(pos => pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) || pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) || pos.FourthTag.Contains(req.KeyWord));
+                result = _context.Post.Where(pos => pos.MainCategory == req.MainCat && pos.IsDrafted == false).Where(
+                    pos => pos.Title.Contains(req.KeyWord) || pos.FirstTag.Contains(req.KeyWord) ||
+                           pos.SecondTag.Contains(req.KeyWord) || pos.ThirdTag.Contains(req.KeyWord) ||
+                           pos.FourthTag.Contains(req.KeyWord));
             }
-
 
 
             if (result.Count() == 0)
@@ -225,47 +235,25 @@ namespace Hamgoon.API.Controllers
         }
 
         [HttpGet("newestPosts/{mainCat}")]
-        public async Task<ActionResult<Post>> NewestPosts(int mainCat)
-        {
-            //var result = '';
-            if (mainCat == -1)
-            {
-                result = _context.Post.Where(post => post.IsDrafted == false).OrderByDescending(post => post.Id).Take(10);
-            }
-            else
-            {
-                result = _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat).OrderByDescending(post => post.Id).Take(10);
-            }
+        public async Task<ActionResult<Post>> NewestPosts(int mainCat) =>
+            mainCat == -1
+                ? Ok((await (_context.Post.Where(p => p.IsDrafted == false).OrderByDescending(p => p.Id)).ToListAsync())
+                    .Take(10))
+                : Ok((await _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat)
+                    .OrderByDescending(post => post.Id).ToListAsync()).Take(10));
 
-
-
-
-            return Ok(result);
-        }
         [HttpGet("mostCommentedPosts/{mainCat}")]
         public async Task<ActionResult<Post>> mostCommentedPosts(int mainCat)
-        {
-            //var result = '';
-            if (mainCat == -1)
-            {
-                result = _context.Post.Where(post => post.IsDrafted == false).OrderByDescending(post => post.CommentCount).Take(10);
-            }
-            else
-            {
-                result = _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat).OrderBy(post => post.CommentCount).Take(10);
-            }
-
-
-
-
-            return Ok(result);
-        }
+            => mainCat == -1
+                ? Ok((await (_context.Post.Where(p => p.IsDrafted == false).OrderByDescending(p => p.CommentCount)).ToListAsync())
+                    .Take(10))
+                : Ok((await _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat)
+                    .OrderByDescending(post => post.CommentCount).ToListAsync()).Take(10));
 
         [Authorize]
         [HttpPost("hamegyry")]
         public async Task<ActionResult<Post>> PostHamegyry(ReqForHamegyry req)
         {
-
             var resultPost = _context.Post.Where(post => post.Id == req.PostId).FirstOrDefault();
 
             //var postToFind = _context.Post.Where(postToQuery => postToQuery.Id == 1).FirstOrDefault();
@@ -282,13 +270,11 @@ namespace Hamgoon.API.Controllers
                     else
                         publisher.Hamegyry += 1;
                 }
-
             }
 
             await _context.SaveChangesAsync();
 
             return Ok();
-
         }
 
 
@@ -320,6 +306,7 @@ namespace Hamgoon.API.Controllers
         {
             return _context.Post.Any(e => e.Id == id);
         }
+
         private object Response(bool status, string msg)
         {
             return new
@@ -328,6 +315,7 @@ namespace Hamgoon.API.Controllers
                 massage = msg
             };
         }
+
         private object Response(bool status, string msg, IQueryable data)
         {
             return new
@@ -337,6 +325,7 @@ namespace Hamgoon.API.Controllers
                 massage = msg
             };
         }
+
         private object Response(bool status, string msg, List<Post> data)
         {
             return new
