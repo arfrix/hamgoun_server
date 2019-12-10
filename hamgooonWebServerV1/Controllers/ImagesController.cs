@@ -79,31 +79,51 @@ namespace hamgooonWebServerV1.Controllers
 
             string imagesPath = Path.Combine(_appEnvironment.WebRootPath, "images");
             string webPFileName = Path.GetFileNameWithoutExtension( Uri.EscapeDataString(file.FileName)) + ".webp";
-            //string pngFileName = Path.GetFileNameWithoutExtension(Uri.EscapeDataString(file.FileName)) + ".png";
-            // string normalImagePath = Path.Combine(imagesPath, image.FileName);
+            string pngFileName = Path.GetFileNameWithoutExtension(Uri.EscapeDataString(file.FileName)) + ".png";
+            string jpgFileName = Path.GetFileNameWithoutExtension(Uri.EscapeDataString(file.FileName)) + ".jpg";
+           
             string webPImagePath = Path.Combine(imagesPath, webPFileName);
-            //string pngImagePath = Path.Combine(imagesPath, pngFileName);
+            string pngImagePath = Path.Combine(imagesPath, pngFileName);
+            string jpgImagePath = Path.Combine(imagesPath, jpgFileName);
 
 
             //</ get Path >
-            
+
 
 
             //< Copy File to Target >
-            //ISupportedImageFormat format = new PngFormat { Quality = 50 };
+            ISupportedImageFormat jepgformat = new JpegFormat();
             ISupportedImageFormat weformat = new WebPFormat { Quality = 30 };
+            /*
 
             using (FileStream webPFileStream = new FileStream(webPImagePath, FileMode.Create))
             {
                 using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false , fixGamma:false))
                 {
+                    
                     imageFactory.Load(file.OpenReadStream())
                                 .AutoRotate()
                                 .Format(weformat)
                                 .Save(webPFileStream);
+
+                    
                 }
             }
+            */
 
+            using (FileStream jpgFileStream = new FileStream(jpgImagePath, FileMode.Create))
+            {
+                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false, fixGamma: false))
+                {
+
+                    imageFactory.Load(file.OpenReadStream())
+                                .AutoRotate()
+                                .Format(jepgformat)
+                                .Save(jpgFileStream);
+
+
+                }
+            }
 
             //</ Copy File to Target >
 
@@ -113,7 +133,7 @@ namespace hamgooonWebServerV1.Controllers
 
 
 
-            return Ok(webPFileName);
+            return Ok(jpgFileName);
 
 
         }

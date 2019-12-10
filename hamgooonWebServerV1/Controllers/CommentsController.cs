@@ -97,7 +97,8 @@ namespace hamgooonWebServerV1.Controllers
         {
             Event eventToAdd = new Event();
             _context.Comment.Add(req.Comment);
-
+            var post = _context.Post.Find(req.Comment.PostId);
+            post.CommentCount += 1;
 
             if (req.Comment.IsReply)
             {

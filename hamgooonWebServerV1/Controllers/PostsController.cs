@@ -44,9 +44,9 @@ namespace hamgooonWebServerV1.Controllers
         [HttpGet("getPostByUrl/{url}")]
         public async Task<ActionResult<IEnumerable<Post>>> getPostByUrl(string  url)
         {
-            var result = _context.Post.Where(post => post.UniqueUrl == url).FirstOrDefault();
-            
-            
+            //var result = _context.Post.Where(post => post.UniqueUrl == url).FirstOrDefault();
+            var result = _context.Post.Where(post => post.UniqueUrl.Equals(url , StringComparison.Ordinal)).FirstOrDefault();
+
             return Ok(result);
         }
 
@@ -256,6 +256,24 @@ namespace hamgooonWebServerV1.Controllers
                  result = _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat).OrderByDescending(post => post.Id).Take(10);
             }
             
+
+
+
+            return Ok(result);
+        }
+        [HttpGet("mostCommentedPosts/{mainCat}")]
+        public async Task<ActionResult<Post>> mostCommentedPosts(int mainCat)
+        {
+            //var result = '';
+            if (mainCat == -1)
+            {
+                result = _context.Post.Where(post => post.IsDrafted == false).OrderByDescending(post => post.CommentCount).Take(10);
+            }
+            else
+            {
+                result = _context.Post.Where(post => post.IsDrafted == false && post.MainCategory == mainCat).OrderBy(post => post.CommentCount).Take(10);
+            }
+
 
 
 
