@@ -13,5 +13,6 @@ namespace HamgoonAPI.Request
 
         // for global user search should assign -1 to bio
         public int Bio { get; set; }
+
     }
 }

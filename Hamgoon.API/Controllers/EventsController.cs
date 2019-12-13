@@ -45,12 +45,12 @@ namespace Hamgoon.API.Controllers
         {
             var notif = _context.Event.Where(notifToFind => notifToFind.ReactorId == whoseNotif);
 
-            if (notif.Count() == 0)
+            if (!notif.Any())
             {
                 return Ok(Response(false, "چیزی موجود نبود"));
             }
 
-            return Ok(Response(true, "", notif.ToList()));
+            return Ok(Response(true, "", await notif.ToListAsync()));
         }
 
 

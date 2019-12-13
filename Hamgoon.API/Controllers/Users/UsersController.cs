@@ -62,7 +62,7 @@ namespace Hamgoon.API.Controllers.Users
         {
             // for global user search should assign -1 to bio
 
-            System.Linq.IQueryable<User> result = null;
+            IQueryable<User> result;
 
             if (req.Bio == -1)
             {
@@ -70,30 +70,30 @@ namespace Hamgoon.API.Controllers.Users
             }
             else
             {
-                switch (req.Bio)
+                result = req.Bio switch
                 {
-                    case 0:
-                        result = _context.User.Where(users => users.Edu_highSchool.Contains(req.KeyWord) || users.Edu_univercity.Contains(req.KeyWord) || users.Edu_subject.Contains(req.KeyWord));
-                        break;
-                    case 1:
-                        result = _context.User.Where(user => user.Work_job.Contains(req.KeyWord) || user.Work_company.Contains(req.KeyWord));
-                        break;
-                    case 2:
-                        result = _context.User.Where(user => user.Languge_motherTongue.Contains(req.KeyWord) || user.Languge_dialect.Contains(req.KeyWord) || user.Languge_secondLangName.Contains(req.KeyWord));
-                        break;
-                    case 3:
-                        result = _context.User.Where(user => user.Location_motherTown.Contains(req.KeyWord) || user.Location_livingCountry.Contains(req.KeyWord) || user.Location_livingTown.Contains(req.KeyWord));
-                        break;
-                }
+                    0 => _context.User.Where(users =>
+                        users.Edu_highSchool.Contains(req.KeyWord) || users.Edu_univercity.Contains(req.KeyWord) ||
+                        users.Edu_subject.Contains(req.KeyWord)),
+                    1 => _context.User.Where(user =>
+                        user.Work_job.Contains(req.KeyWord) || user.Work_company.Contains(req.KeyWord)),
+                    2 => _context.User.Where(user =>
+                        user.Languge_motherTongue.Contains(req.KeyWord) || user.Languge_dialect.Contains(req.KeyWord) ||
+                        user.Languge_secondLangName.Contains(req.KeyWord)),
+                    3 => _context.User.Where(user =>
+                        user.Location_motherTown.Contains(req.KeyWord) ||
+                        user.Location_livingCountry.Contains(req.KeyWord) ||
+                        user.Location_livingTown.Contains(req.KeyWord)),
+                    _ => default
+                };
             }
 
 
 
 
-            if (result.Count() == 0)
+            if (!result.Any())
                 return Ok(Models.Response.NewResponse(false, "not found"));
-            else
-                return Ok(Models.Response.NewResponse(true, "found somthing", result));
+            return Ok(Models.Response.NewResponse(true, "found somthing", await result.ToListAsync()));
         }
 
         [HttpPost("sendEmail")]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,16 @@ namespace Hamgoon.API.Models
             };
         }
 
-        public static object NewResponse(bool status, string msg, IQueryable data)
+        public static object NewResponse<T>(bool status, string msg, IQueryable<T> data)
+                 {
+                     return new
+                     {
+                         data = data,
+                         status = status,
+                         massage = msg
+                     };
+                 }
+        public static object NewResponse<T>(bool status, string msg, List<T> data)
         {
             return new
             {
