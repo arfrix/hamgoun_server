@@ -209,7 +209,7 @@ namespace Hamgoon.API.Controllers
         [HttpPost("search")]
         public async Task<ActionResult<Post>> PostSearch(ReqForSearch req)
         {
-            System.Linq.IQueryable<Post> result = null;
+            IQueryable<Post> result;
 
             if (req.MainCat == -1)
             {
@@ -228,10 +228,9 @@ namespace Hamgoon.API.Controllers
             }
 
 
-            if (result.Count() == 0)
+            if (!result.Any())
                 return Ok(Response(false, "not found"));
-            else
-                return Ok(Response(true, "found somthing", result));
+            return Ok(Response(true, "found somthing", result));
         }
 
         [HttpGet("newestPosts/{mainCat}")]
@@ -316,7 +315,7 @@ namespace Hamgoon.API.Controllers
             };
         }
 
-        private object Response(bool status, string msg, IQueryable data)
+        private object Response<T>(bool status, string msg, IQueryable<T> data)
         {
             return new
             {
@@ -326,7 +325,7 @@ namespace Hamgoon.API.Controllers
             };
         }
 
-        private object Response(bool status, string msg, List<Post> data)
+        private object Response<T>(bool status, string msg, List<T> data)
         {
             return new
             {

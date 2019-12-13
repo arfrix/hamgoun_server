@@ -50,7 +50,7 @@ namespace Hamgoon.API.Controllers
                 return Ok(Response(false, "چیزی موجود نبود"));
             }
 
-            return Ok(Response(true, "", notif));
+            return Ok(Response(true, "", notif.ToList()));
         }
 
 
@@ -214,7 +214,16 @@ namespace Hamgoon.API.Controllers
                 massage = msg
             };
         }
-        private object Response(bool status, string msg, IQueryable data)
+        private object Response<T>(bool status, string msg, IQueryable<T> data)
+        {
+            return new
+            {
+                data = data,
+                status = status,
+                massage = msg
+            };
+        }
+        private object Response<T>(bool status, string msg, List<T> data)
         {
             return new
             {
