@@ -180,7 +180,7 @@ namespace Hamgoon.API.Controllers
         // POST: Posts
         [Authorize]
         [HttpPost("myPostsList")]
-        public async Task<ActionResult<Post>> myPostsList(ReqForMyPostList req)
+        public async Task<ActionResult<Post>> myPostsList([FromBody]ReqForMyPostList req)
         {
             var postList = _context.Post
                 .Where(pos =>

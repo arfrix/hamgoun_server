@@ -39,14 +39,14 @@ namespace Hamgoon.API
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-           Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/images")),
+           Path.Combine("/hamgoonImages")),
                 RequestPath = new PathString("/images")
             });
 
             app.UseDirectoryBrowser(new DirectoryBrowserOptions
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/images")),
+            Path.Combine("/hamgoonImages")),
                 RequestPath = new PathString("/images")
             });
 
