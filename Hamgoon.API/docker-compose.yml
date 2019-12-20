@@ -1,11 +1,18 @@
 version: '2'
 services:
+  nginx:
+    build: /home/amirreza/nginx/
+    links: 
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
   app:
     build: .
     links:
       - mysql
     ports:
-      - "80:80"
+      - "8081:80"
 
   mysql:
     image: "percona:8.0"
